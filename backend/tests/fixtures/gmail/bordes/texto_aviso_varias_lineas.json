@@ -1,0 +1,71 @@
+{
+  "id": "borde-0002",
+  "threadId": "hilo-borde-0002",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1786889760000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/alternative",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de transferencia (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "multipart/alternative; boundary=x"
+      }
+    ],
+    "body": {
+      "size": 0
+    },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "text/plain",
+        "filename": "",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "text/plain; charset=UTF-8"
+          }
+        ],
+        "body": {
+          "size": 242,
+          "data": "wqFMaXN0byEgVG9kbyBzYWxpw7MgYmllbiBjb24gdHVzIG1vdmltaWVudG9zDQoNCkJhbmNvbG9tYmlhOiBUcmFuc2ZlcmlzdGUgJDYsMDAwLjAwIGRlc2RlIHR1DQpjdWVudGEgKjEyMzQgYSBsYSBjdWVudGEgKjU2NzggZWwNCjE2LzA4LzI2IGEgbGFzIDA5OjE1LiBTaSB0aWVuZXMgZHVkYXMsDQpsbGFtYW5vcyBhbCAwMDAgMDAwIDAwMDAuDQoNCkNvcnJlbyBkZSBlamVtcGxvIGludmVudGFkbyBwYXJhIHBydWViYXMuDQo"
+        }
+      },
+      {
+        "partId": "0",
+        "mimeType": "text/html",
+        "filename": "",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "text/html; charset=UTF-8"
+          }
+        ],
+        "body": {
+          "size": 33,
+          "data": "PHA-b3RyYSB2ZXJzaW9uIHF1ZSBubyBzZSB1c2E8L3A-"
+        }
+      }
+    ]
+  }
+}

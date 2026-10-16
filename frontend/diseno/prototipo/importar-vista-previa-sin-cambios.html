@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Importar: nada nuevo · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="importar-archivo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Elegir otro archivo</a></nav>
+      <h1>Revisa antes de importar</h1>
+      <p class="ayuda">Esto es lo que pasará si importas reporte-septiembre-EJEMPLO.xlsx.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="titulo-plan">
+      <div class="hoja__cabeza"><h2 id="titulo-plan">Qué va a pasar</h2></div>
+      <ul class="libreta"><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-plus"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Se agregan</p>
+          <p class="movimiento__meta">No hay movimientos nuevos en este archivo.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">0</span></div>
+      </li><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Ya están</p>
+          <p class="movimiento__meta">Coinciden con lo que llegó por correo o con una importación anterior.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">44</span></div>
+      </li></ul>
+      <div class="grupo"><div class="aviso aviso--info" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Importar este archivo no cambiaría nada.</span> Tu saldo seguiría en <span class="monto">$4.739.150</span>. Si esperabas movimientos nuevos, descarga un rango de fechas más reciente.</p><div class="aviso__acciones"><button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-file-spreadsheet"/></svg>Elegir otro archivo</button></div></div>
+    </div></div>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Vista previa cuando el archivo no cambia nada (estado vacío). El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Estado vacío</td><td><code>se_agregan = 0</code> y <code>se_corrigen = 0</code>: el servidor lo informa y el frontend oculta «¿Es tu saldo real?» y «Sí, importar».</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

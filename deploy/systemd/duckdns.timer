@@ -1,0 +1,12 @@
+# Actualiza DuckDNS al arrancar la VM y luego cada 30 minutos.
+
+[Unit]
+Description=Actualizar la IP en DuckDNS cada 30 minutos
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=30min
+Unit=duckdns.service
+
+[Install]
+WantedBy=timers.target

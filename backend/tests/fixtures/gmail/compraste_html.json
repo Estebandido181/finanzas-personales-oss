@@ -1,0 +1,40 @@
+{
+  "id": "msg-0001",
+  "threadId": "hilo-0001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1786138950000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de compra (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyAoZWplbXBsbyk8L3RpdGxlPgo8c3R5bGU-dGQgeyBmb250LWZhbWlseTogQXJpYWw7IH0gLm9jdWx0byB7IGRpc3BsYXk6bm9uZSB9PC9zdHlsZT48L2hlYWQ-Cjxib2R5Pgo8dGFibGUgd2lkdGg9IjYwMCIgY2VsbHBhZGRpbmc9IjAiIGNlbGxzcGFjaW5nPSIwIj4KICA8dHI-PHRkPjxpbWcgc3JjPSJodHRwczovL2V4YW1wbGUuY29tL2xvZ28ucG5nIiBhbHQ9IiI-PC90ZD48L3RyPgogIDx0cj48dGQ-PGgxPiZpZXhjbDtMaXN0byEgVG9kbyBzYWxpJm9hY3V0ZTsgYmllbiBjb24gdHVzIG1vdmltaWVudG9zPC9oMT48L3RkPjwvdHI-CiAgPHRyPjx0ZD4KICAgIDxwIHN0eWxlPSJmb250LXNpemU6MTRweCI-QmFuY29sb21iaWE6IENvbXByYXN0ZSAkMjQ1LjcwMCwwMCBlbiBNRVJQQUdPKlRJRU5EQUVKRU1QTE8gY29uIHR1IFQuRGViICoxMjM0LAogICAgICBlbCAwNy8wOC8yMDI2IGEgbGFzJm5ic3A7MTY6NDIuIFNpIHRpZW5lcyBkdWRhcywgZW5jdWVudHJhbm9zIGFxdWk6IDYwNDAwMDAwMDAgbwogICAgICAwMTgwMDAwMDAwMDAuIEVzdGFtb3MgY2VyY2EuPC9wPgogIDwvdGQ-PC90cj4KICA8dHI-PHRkIHN0eWxlPSJmb250LXNpemU6MTFweDtjb2xvcjojNzc3Ij4KICAgIDxwPjxiPkNvbnNlam9zIGRlIHNlZ3VyaWRhZDo8L2I-PC9wPgogICAgPHVsPgogICAgICA8bGk-TnVuY2EgY29tcGFydGFzIHR1cyBjbGF2ZXMgbmkgYyZvYWN1dGU7ZGlnb3MgZGUgdmVyaWZpY2FjaSZvYWN1dGU7bi48L2xpPgogICAgICA8bGk-QmFuY29sb21iaWEgbnVuY2EgdGUgcGVkaXImYWFjdXRlOyBkYXRvcyBwb3IgY29ycmVvLjwvbGk-CiAgICA8L3VsPgogICAgPHA-RXN0ZSBlcyB1biBjb3JyZW8gZGUgZWplbXBsbyBpbnZlbnRhZG8gcGFyYSBwcnVlYmFzLjwvcD4KICA8L3RkPjwvdHI-CjwvdGFibGU-CjwvYm9keT48L2h0bWw-"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>No está en el banco (error) · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="importacion-detalle.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Importación del 2 de octubre</a></nav>
+      <h1>No está en el banco</h1>
+      <p class="ayuda">Movimientos que llegaron por correo dentro de las fechas del reporte (del 2 de septiembre al 1 de octubre) y que el banco no trae. La app nunca los borra sola: te sugiere y tú decides.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="n1">
+      <div class="hoja__cabeza"><h2 id="n1">1 de 2 · No está en el banco</h2></div>
+      <ul class="libreta"><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-mail"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">TIENDA EJEMPLO ONLINE</p>
+          <p class="movimiento__meta">Del correo · compra · 14 de septiembre, 3:10 p. m.</p>
+        </div>
+        <div class="movimiento__monto"><span class="monto">$89.900</span></div>
+      </li></ul>
+      <div class="grupo"><div class="aviso aviso--info" role="note">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Análisis.</span> El banco no tiene ninguna compra de ese día ni de un día antes o después con ese monto. Pasaron 18 días y un cobro real ya debería aparecer: lo más probable es un aviso repetido o una compra rechazada.</p><p class="aviso__titulo">Te sugerimos: borrar el movimiento.</p></div>
+    </div></div>
+      <div class="aviso__acciones ofertas-regla"><button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar movimiento</button><button type="button" class="boton "><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>Dejarlo: sigue contando en tu saldo</button></div>
+      <div class="grupo"><div class="aviso aviso--error" role="alert">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">No se pudo guardar tu respuesta.</span> La app no pudo completar la acción. Vuelve a intentarlo en unos minutos.</p></div>
+    </div></div>
+    </section>
+    <section class="hoja" aria-labelledby="n2">
+      <div class="hoja__cabeza"><h2 id="n2">2 de 2 · No está en el banco</h2></div>
+      <ul class="libreta"><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-mail"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Transferencia a *1234 · LAURA GÓMEZ EJEMPLO</p>
+          <p class="movimiento__meta">Del correo · transferencia · 20 de septiembre, 9:05 a. m.</p>
+        </div>
+        <div class="movimiento__monto"><span class="monto">$120.000</span></div>
+      </li></ul>
+      <div class="grupo"><div class="aviso aviso--info" role="note">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Análisis.</span> Pasaron 12 días y el banco no la trae. Pudo ser una transferencia programada que no se ejecutó, o el banco la anotó con otra fecha.</p><p class="aviso__titulo">No hay una pista clara: elige tú.</p></div>
+    </div></div>
+      <div class="aviso__acciones ofertas-regla"><button type="button" class="boton "><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar movimiento</button><button type="button" class="boton "><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>Dejarlo: sigue contando en tu saldo</button></div>
+    </section>
+    <div class="aviso aviso--info" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">El 2 de septiembre no se revisa.</span> El reporte trae 120 movimientos y su día más antiguo puede venir incompleto, así que ese día no marca movimientos como «no está en el banco».</p></div>
+    </div>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">No está en el banco: no se pudo guardar la respuesta. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Error</td><td>Fallo de la petición: aviso con el texto de «Falla del servidor» o el <code>detalle</code> de la API.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

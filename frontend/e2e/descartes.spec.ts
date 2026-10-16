@@ -1,0 +1,51 @@
+import { entrar, expect, revisarAccesibilidad, TAMANOS, test } from "./ayudas";
+import { pesos } from "../src/compartido/formatos/formato";
+import type { components } from "../src/api/esquema";
+import { fileURLToPath } from "node:url";
+
+test("descartar y restaurar requieren confirmar, conservan el monto actual y recargan Movimientos", async ({ page, request }) => {
+  expect((await request.get("/e2e/datos/importacion")).ok()).toBe(true);
+  await entrar(page, "/app/movimientos?mes=2026-08");
+  await page.waitForLoadState("networkidle");
+  const datos: components["schemas"]["MovimientosDelMes"] = await (await page.request.get("/api/movimientos?mes=2026-08")).json();
+  const movimiento = datos.movimientos.find((m) => m.puede_descartar)!;
+  expect(movimiento).toBeDefined();
+  const fila = page.getByRole("listitem").filter({ has: page.getByText(movimiento.descripcion, { exact: true }) }).first();
+  await fila.getByRole("button", { name: `Descartar ${movimiento.descripcion}`, exact: true }).click();
+  const dialogo = page.getByRole("dialog", { name: "Descartar movimiento" });
+  await expect(dialogo).toContainText(`Monto actual: ${pesos(movimiento.monto_centavos)}`);
+  await revisarAccesibilidad(page);
+  const descartado = page.waitForResponse((r) => r.url().endsWith(`/api/movimientos/${movimiento.id}/descartar`) && r.request().method() === "POST");
+  await dialogo.getByRole("button", { name: "Sí, descartar movimiento" }).click();
+  expect((await descartado).ok()).toBe(true);
+  const resultado: components["schemas"]["ResultadoDescarte"] = await (await descartado).json();
+  await expect(page.getByRole("heading", { name: "Movimiento descartado" })).toBeVisible();
+  await expect(page.getByText(`Saldo después: ${pesos(resultado.saldo_despues_centavos!)}`, { exact: true })).toBeVisible();
+  await page.waitForLoadState("networkidle");
+  await page.getByRole("button", { name: "Descartados", exact: true }).click();
+  const lista = page.getByRole("list", { name: "Movimientos descartados" });
+  await expect(lista.getByText(movimiento.descripcion, { exact: true })).toBeVisible();
+  await revisarAccesibilidad(page);
+  if (process.env.CAPTURAS_DESCARTES) for (const [tamano, medidas] of Object.entries(TAMANOS)) for (const modo of ["claro", "oscuro"]) {
+    await page.waitForLoadState("networkidle");
+    await page.setViewportSize(medidas);
+    await page.evaluate((tema) => document.documentElement.setAttribute("data-tema", tema), modo);
+    await revisarAccesibilidad(page);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const alto = await page.evaluate(() => document.documentElement.scrollHeight);
+    await page.setViewportSize({ width: medidas.width, height: Math.max(alto, medidas.height) });
+    await page.screenshot({ path: fileURLToPath(new URL(`../capturas/12-descartados-${tamano}-${modo}.png`, import.meta.url)), animations: "disabled" });
+  }
+  await page.waitForLoadState("networkidle");
+  await lista.getByRole("button", { name: `Restaurar ${movimiento.descripcion}`, exact: true }).click();
+  const restauracion = page.getByRole("dialog", { name: "Restaurar movimiento" });
+  await expect(restauracion).toContainText("Se restaurará el monto actual que ves aquí");
+  await revisarAccesibilidad(page);
+  const restaurado = page.waitForResponse((r) => r.url().endsWith(`/api/movimientos/${movimiento.id}/restaurar`) && r.request().method() === "POST");
+  await restauracion.getByRole("button", { name: "Sí, restaurar movimiento" }).click();
+  expect((await restaurado).ok()).toBe(true);
+  await expect(page.getByRole("heading", { name: "Movimiento restaurado" })).toBeVisible();
+  await expect(lista).toHaveCount(0);
+  await page.waitForLoadState("networkidle");
+  expect((await request.get("/e2e/datos/reiniciar")).ok()).toBe(true);
+});

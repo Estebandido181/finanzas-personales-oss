@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Entornos virtuales
+.venv/
+venv/
+
+# Pruebas y herramientas
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+# Herramientas y evidencia local de Codex (no es configuración versionada).
+.codex-local/
+.pnpm-store/
+
+# Secretos y datos locales
+.env
+.env.*
+!.env.example
+# Archivos del banco (D43): ni reales ni inventados; las pruebas los generan
+# por código (tests/excel_inventado.py).
+*.xlsx
+*.xls
+*.xlsm
+# Token de Gmail y cliente OAuth de Google: nunca al repositorio.
+token*.json
+client_secret*.json
+credenciales*.json
+*.token.json
+# Registros (pueden traer ids de correos): fuera del repositorio.
+*.log
+*.db
+*.sqlite3
+# Respaldos locales de python -m finanzas.migrar --respaldos respaldos
+respaldos/
+
+# Editores y sistema
+.vscode/
+.idea/
+.DS_Store
+
+# Worktrees temporales de los agentes de Claude Code
+.claude/worktrees/
+
+# Capturas y registros del MCP de Playwright (pueden contener datos de pantalla)
+.playwright-mcp/
+
+# Frontend (ítem 12). La compilación (frontend/dist) ya la cubre "dist/"; los
+# tipos generados sí se versionan, en frontend/src/api/esquema.d.ts.
+node_modules/
+frontend/test-results/
+frontend/playwright-report/
+# Copia antigua de los tipos, fuera de frontend/ (ver README, "API JSON").
+openapi/esquema.d.ts
+# Las capturas se generan con datos sintéticos y no se versionan.
+# La imagen revisada de la demo se conserva aparte en docs/images/.
+frontend/capturas/
+frontend/diseno/prototipo/capturas/
+
+# Grafo de Graphify: se regenera en cada sesión (`graphify update .`)
+graphify-out/
+
+# Claves, estado y planes locales adicionales
+*.pem
+*.key
+*.sqlite
+*.tfstate*
+*.tfplan
+*.auto.tfvars
+terraform.tfvars
+backend.hcl

@@ -1,0 +1,25 @@
+# Sincronización periódica: cada 6 horas (00:00, 06:00, 12:00 y 18:00, hora
+# del servidor), como pide D7.
+#
+# Cambiar el intervalo sin tocar este archivo:
+#   sudo systemctl edit finanzas-sync.timer
+# y escribir, por ejemplo (la línea "OnCalendar=" vacía borra la anterior):
+#   [Timer]
+#   OnCalendar=
+#   OnCalendar=*-*-* 00/3:00:00
+# Luego: sudo systemctl restart finanzas-sync.timer
+# Próximas ejecuciones: systemctl list-timers finanzas-sync.timer
+
+[Unit]
+Description=Finanzas personales: sincronizar cada 6 horas
+
+[Timer]
+OnCalendar=*-*-* 00/6:00:00
+# Si la VM estaba apagada a la hora programada, sincroniza al arrancar.
+Persistent=true
+# Un retraso aleatorio de hasta 5 minutos para no llegar a Gmail en punto.
+RandomizedDelaySec=5min
+Unit=finanzas-sync.service
+
+[Install]
+WantedBy=timers.target

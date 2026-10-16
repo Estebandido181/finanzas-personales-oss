@@ -1,0 +1,56 @@
+{
+  "id": "borde-0003",
+  "threadId": "hilo-borde-0003",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1786978800000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/mixed",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Extracto (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "multipart/mixed; boundary=y"
+      }
+    ],
+    "body": {
+      "size": 0
+    },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "image/png",
+        "filename": "logo.png",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "image/png"
+          }
+        ],
+        "body": {
+          "size": 4,
+          "attachmentId": "adjunto-inventado-0001"
+        }
+      }
+    ]
+  }
+}

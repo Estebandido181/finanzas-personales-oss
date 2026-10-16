@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Finanzas personales</title>
+    <link rel="icon" href="/diseno/favicon.svg" type="image/svg+xml" />
+    <!-- Instalable en el celular (ítem 18). Colores de fondo de tokens.css
+         (claro y oscuro); íconos generados con pwa/generar-iconos.mjs. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#E6DAC0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#182422" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/iconos/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Finanzas" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- Aplica la apariencia elegida antes de pintar (sin destello). Es un
+         archivo aparte y sin defer: la CSP no permite scripts en línea. -->
+    <script src="/tema-inicial.js"></script>
+    <script type="module" src="/src/app/main.tsx"></script>
+  </head>
+  <body>
+    <div id="raiz"></div>
+  </body>
+</html>

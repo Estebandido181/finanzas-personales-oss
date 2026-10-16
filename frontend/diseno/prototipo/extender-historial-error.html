@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Extender historial (error) · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="importacion-detalle.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Importación del 2 de octubre</a></nav>
+      <h1>Extender historial</h1>
+      <p class="ayuda">Tu historial empieza el 1 de septiembre de 2026. Sube los Excel del banco de antes de esa fecha para llevar las cuentas más atrás. El saldo actual no cambia: cambia el saldo inicial.</p>
+    </div></header>
+    <div class="aviso aviso--error aviso--destacado" role="alert">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">No se pudo leer el archivo.</span> No se agregó nada. Elige otro archivo e inténtalo de nuevo.</p></div>
+    </div>
+    <section class="hoja" aria-labelledby="t-arch">
+      <div class="hoja__cabeza"><h2 id="t-arch">Excel del banco</h2></div>
+      <ul class="libreta"><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-file-spreadsheet"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">reporte-julio-EJEMPLO.xlsx</p>
+          <p class="movimiento__meta">Leído · 120 movimientos, del 4 al 31 de julio</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-x"/></svg>Quitar<span class="sr-only"> reporte-julio-EJEMPLO.xlsx</span></button></div>
+      </li></ul><ul class="libreta"><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">reporte-agosto.xls</p>
+
+          <p class="movimiento__meta movimiento__origen"><span class="error-campo"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg><span>Ese archivo no es un Excel (.xlsx). Descarga el reporte en Excel desde la Sucursal Virtual.</span></span></p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-x"/></svg>Quitar<span class="sr-only"> reporte-agosto.xls</span></button></div>
+      </li></ul>
+      <div class="grupo"><button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-file-spreadsheet"/></svg>Elegir otro archivo</button></div>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Extender historial: el archivo elegido no se pudo leer. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Error del archivo</td><td>422 con <code>errores: [{archivo, codigo, detalle}]</code>; el <code>detalle</code> viene escrito para el dueño. Los archivos que sí se leyeron se conservan.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

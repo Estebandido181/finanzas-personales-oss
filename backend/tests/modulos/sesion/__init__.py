@@ -1,0 +1,1 @@
+"""Pruebas agrupadas por responsabilidad."""

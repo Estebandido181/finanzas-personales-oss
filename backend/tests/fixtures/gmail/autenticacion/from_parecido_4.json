@@ -1,0 +1,36 @@
+{
+  "id": "aut-0011",
+  "threadId": "hilo-aut-0011",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1787325060000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/plain",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com; dkim=pass header.i=@notificacionesbancolombiа.com; spf=pass smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombiа.com; dmarc=pass header.from=notificacionesbancolombiа.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia <alertasynotificaciones@an.notificacionesbancolombiа.com>"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de compra (ataque de ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/plain; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "QmFuY29sb21iaWE6IENvbXByYXN0ZSAkOTkuOTk5LDAwIGVuIFRJRU5EQSBGQUxTQSBFSkVNUExPIGNvbiB0dSBULkRlYiAqOTk5OSwgZWwgMjEvMDgvMjAyNiBhIGxhcyAxMDoxMS4"
+    }
+  }
+}

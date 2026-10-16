@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Revisa antes de importar · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="importar-archivo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Elegir otro archivo</a></nav>
+      <h1>Revisa antes de importar</h1>
+      <p class="ayuda">Todavía no cambió nada. Esto es lo que pasará si importas reporte-septiembre-EJEMPLO.xlsx.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="titulo-plan">
+      <div class="hoja__cabeza"><h2 id="titulo-plan">Qué va a pasar</h2></div>
+      <ul class="libreta"><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-plus"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Se agregan</p>
+          <p class="movimiento__meta">Movimientos del banco que no habían llegado por correo. 11 entran categorizados por tus reglas y 3 quedan sin categoría.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">14</span></div>
+      </li><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Ya están</p>
+          <p class="movimiento__meta">Coinciden con lo que llegó por correo. Se confirman y no se repiten.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">30</span></div>
+      </li><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Se corrigen</p>
+          <p class="movimiento__meta">Estaban registrados con otro monto. Quedan con el monto del banco.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">2</span></div>
+      </li></ul>
+      <p class="ayuda grupo">2 movimientos son anteriores a tu fecha de inicio (1 de septiembre de 2026) y no se importan. Después te preguntamos por 3 movimientos parecidos y revisas 2 que el banco no trae.</p>
+    </section>
+    <section class="hoja" aria-labelledby="titulo-saldo">
+      <div class="hoja__cabeza"><h2 id="titulo-saldo">Tu saldo después de importar</h2></div>
+      <div class="pila-sm">
+        <div class="fila-cifra"><span class="cifra__nombre">Saldo actual en la app</span><span class="monto">$4.802.150</span></div>
+        <div class="fila-cifra"><span class="cifra__nombre">Cambio por esta importación</span><span class="monto monto--negativo">−$63.000</span></div>
+        <div class="total"><span>Tu saldo quedará en</span><span class="subrayado-doble"><span class="monto">$4.739.150</span></span></div>
+      </div>
+      <p class="etiqueta grupo" id="pregunta-saldo">¿Es tu saldo real?</p>
+      <p class="ayuda" style="margin-top:var(--espacio-1)">Compáralo con el que ves ahora en la Sucursal Virtual de Bancolombia.</p>
+      <div class="aviso__acciones ofertas-regla"><button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>Sí, importar</button><a class="boton " href="importar-revisar.html">No, revisar</a></div>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Vista previa de la importación: qué pasará y el saldo que quedaría (nuevo paso, antes de guardar). El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Conteos «Se agregan / Ya están / Se corrigen»</td><td><code>GET /api/importaciones/analisis/{id}</code> con <code>estado = "listo"</code> → <code>se_agregan</code>, <code>ya_estan</code>, <code>se_corrigen</code>, <code>entran_categorizados</code>, <code>quedan_sin_categoria</code>, <code>anteriores_al_inicio</code>.</td></tr><tr><td>Texto «Después te preguntamos…»</td><td><code>preguntas_estimadas</code> y <code>no_esta_estimados</code>.</td></tr><tr><td>Saldo que quedaría</td><td><code>saldo_actual_centavos</code>, <code>diferencia_centavos</code> y <code>saldo_resultante_centavos</code>: el motor calcula el plan completo <b>sin guardar</b>; el frontend no suma nada (D44).</td></tr><tr><td>«Sí, importar»</td><td><code>POST /api/importaciones</code> con <code>{analisis_id}</code>: guarda exactamente lo analizado. Si algo cambió entre el análisis y la confirmación (por ejemplo, llegó un aviso nuevo), responde 409 con el análisis nuevo y la pantalla se actualiza antes de guardar.</td></tr><tr><td>«No, revisar»</td><td><code>POST /api/importaciones/analisis/{id}/descartar</code> (no guarda nada) y navega a «Revisemos antes de importar».</td></tr><tr><td>Cargando / error</td><td>Ver <code>importar-analisis</code> e <code>importar-analisis-error</code>; el análisis vence (<code>vence_en</code>) y, si venció, se pide analizar otra vez.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

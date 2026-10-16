@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Revisemos antes de importar · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="importar-vista-previa.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Vista previa</a></nav>
+      <h1>Revisemos antes de importar</h1>
+      <p class="ayuda">No se importó nada: todo sigue como estaba. Si el saldo no cuadra, el problema está en el archivo o en el saldo actual de la app.</p>
+    </div></header>
+    <div class="aviso aviso--info" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Con qué revisar.</span> Compara el saldo que ves en la Sucursal Virtual con el de la app, y las fechas del reporte con el rango que descargaste.</p></div>
+    </div>
+    <section class="hoja" aria-labelledby="titulo-causas">
+      <div class="hoja__cabeza"><h2 id="titulo-causas">Qué puede estar pasando, de lo más a lo menos probable</h2></div>
+      <ul class="libreta"><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-circle-question-mark"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">El saldo de la app no coincide con el del banco</p>
+          <p class="movimiento__meta">La app dice <span class="monto">$4.802.150</span>. Si en Bancolombia ves otro, corrígelo con un ajuste de saldo antes de importar.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton " href="saldo.html">Ajustar el saldo</a></div>
+      </li><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-circle-question-mark"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">El archivo no cubre todo el rango</p>
+          <p class="movimiento__meta">Trae 120 movimientos: el banco corta ahí y puede faltar lo más antiguo. Descarga un rango más corto, por ejemplo un mes.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton " href="importar.html">Elegir otro archivo</a></div>
+      </li><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-circle-question-mark"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Falta historial</p>
+          <p class="movimiento__meta">2 movimientos son anteriores a tu fecha de inicio. Si el saldo del banco ya los incluye, extiende el historial.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton " href="extender-historial.html">Extender historial</a></div>
+      </li></ul>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Después de «No, revisar»: no se importó nada y se explica qué revisar. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Texto de las causas</td><td><code>GET /api/importaciones/analisis/{id}/diagnostico</code> → <code>causas_probables: [{codigo, titulo, texto, accion}]</code>, ordenadas por probabilidad por el servidor; <code>accion</code> ∈ <code>ajustar_saldo</code>, <code>elegir_otro_archivo</code>, <code>extender_historial</code>.</td></tr><tr><td>«No se importó nada»</td><td>La confirmación de que el análisis se descartó: <code>descartado = true</code> en la respuesta de <code>descartar</code>.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

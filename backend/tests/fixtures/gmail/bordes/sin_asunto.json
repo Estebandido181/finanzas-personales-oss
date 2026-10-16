@@ -1,0 +1,36 @@
+{
+  "id": "borde-0009",
+  "threadId": "hilo-borde-0009",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1787245500000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/plain",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/plain; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "VGV4dG8gZGUgZWplbXBsbyBzaW4gYXZpc28gcmVjb25vY2libGUu"
+    }
+  }
+}

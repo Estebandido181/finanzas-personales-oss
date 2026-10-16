@@ -1,0 +1,200 @@
+/*
+ * Estilos de la app. Única fuente de verdad: ../diseno/tokens.css (ítem 11).
+ * Aquí solo se conectan esos tokens a Tailwind; ningún color, medida ni
+ * fuente se define de nuevo. Las fuentes (woff2) las resuelve Vite desde
+ * diseno/fuentes/ y salen con hash en /app/assets/ (autoalojadas).
+ */
+@import "tailwindcss";
+@import "../../diseno/tokens.css";
+@source "../";
+
+/* Modo oscuro: forzado con data-tema="oscuro" o, sin elección, el del sistema.
+ * Casi nunca hace falta: los tokens ya cambian solos con el modo. */
+@custom-variant dark {
+  &:where([data-tema="oscuro"], [data-tema="oscuro"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-tema="claro"]), :root:not([data-tema="claro"]) *) {
+      @slot;
+    }
+  }
+}
+
+/* Se borran las paletas, tamaños y cortes de Tailwind: así solo existen las
+ * clases que salen de los tokens (bg-card, text-muted-foreground, …) y no se
+ * puede usar un color o un tamaño "suelto" por error. El espaciado sigue la
+ * escala de 4 px de Tailwind (p-4 = 1rem = --espacio-4); los espaciados con
+ * nombre se usan como p-(--espacio-hoja). */
+@theme {
+  --color-*: initial;
+  --text-*: initial;
+  --font-*: initial;
+  --shadow-*: initial;
+  --radius-*: initial;
+  --breakpoint-*: initial;
+  /* El mismo corte de tokens.css (@media min-width: 900px). */
+  --breakpoint-computador: 56.25rem;
+}
+
+/* Largo de las barras de "¿En qué se fue?" (src/inicio/grafico.tsx): una
+ * clase por cada porcentaje entero. La CSP no deja poner el ancho en línea
+ * (style="…"), así que se generan aquí las 101 clases w-[0%] … w-[100%]. */
+@source inline("w-[{0..100}%]");
+
+@theme inline {
+  --color-transparent: transparent;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-regla: var(--regla);
+  --color-renglon: var(--renglon);
+  --color-margen-libro: var(--margen-libro);
+  --color-borde-hoja: var(--borde-hoja);
+  --color-borde-suave: var(--borde-suave);
+  --color-sombra: var(--sombra);
+  --color-velo: var(--velo);
+  --color-exito: var(--exito);
+  --color-advertencia: var(--advertencia);
+  --color-aviso-exito: var(--aviso-exito-fondo);
+  --color-aviso-advertencia: var(--aviso-advertencia-fondo);
+  --color-aviso-error: var(--aviso-error-fondo);
+  --color-aviso-info: var(--aviso-info-fondo);
+  --color-monto-positivo: var(--monto-positivo);
+  --color-monto-negativo: var(--monto-negativo);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-titulos: var(--fuente-titulos);
+  --font-texto: var(--fuente-texto);
+  --font-montos: var(--fuente-montos);
+
+  --text-sm: var(--texto-sm);
+  --text-base: var(--texto-base);
+  --text-lg: var(--texto-lg);
+  --text-xl: var(--texto-xl);
+  --text-2xl: var(--texto-2xl);
+  --text-3xl: var(--texto-3xl);
+  --text-monto-grande: var(--texto-monto-grande);
+
+  --font-weight-normal: var(--peso-normal);
+  --font-weight-medio: var(--peso-medio);
+  --font-weight-fuerte: var(--peso-fuerte);
+
+  --radius-hoja: var(--radius);
+  --radius-chip: var(--radio-chip);
+  --radius-barra: var(--radio-barra);
+
+  /* Sombras de papel sobre papel (difusas, sin desplazamiento sólido):
+   * hojas, botones y campos. Cambian con el modo (tokens.css). */
+  --shadow-hoja: var(--sombra-hoja);
+  --shadow-boton: var(--sombra-boton);
+  --shadow-campo: var(--sombra-campo);
+  --shadow-barra: var(--sombra-barra);
+
+  --ease-libreta: var(--curva);
+}
+
+/* Base: lo mismo que el prototipo (diseno/prototipo/componentes.css). */
+@layer base {
+  body {
+    background-color: var(--background);
+    /* Grano de papel: SVG local (CSP 'self'), sin estilos en línea. */
+    background-image: var(--textura);
+    color: var(--foreground);
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-base);
+    line-height: var(--interlineado-texto);
+    font-optical-sizing: auto;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--fuente-titulos);
+    /* Alegreya se sirve solo en 700 (el único peso que se usa en títulos). */
+    font-weight: 700;
+    line-height: var(--interlineado-titulos);
+    letter-spacing: var(--tracking-titulos);
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: var(--texto-2xl);
+  }
+  h2 {
+    font-size: var(--texto-xl);
+  }
+  h3 {
+    font-size: var(--texto-lg);
+  }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: var(--texto-3xl);
+    }
+  }
+  a {
+    color: inherit;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+  :focus-visible {
+    outline: var(--borde-foco) solid var(--ring);
+    outline-offset: 2px;
+  }
+  /* Íconos de Lucide: trazo de 1,75 px, más cercano a una pluma (SISTEMA.md). */
+  svg.lucide {
+    stroke-width: 1.75;
+    flex: none;
+  }
+}
+
+/* Piezas del estilo «libro mayor» que no caben bien en clases sueltas. Son
+ * @utility (no @layer components) para poder usarlas con variantes, p. ej.
+ * aria-[current=page]:papel. */
+/* Hoja de libro mayor: grano de papel y doble raya roja del margen
+ * izquierdo. Las rayas son decorativas y quedan dentro del relleno de la
+ * hoja, lejos del texto. */
+@utility hoja-libro {
+  --margen-x: calc(var(--espacio-hoja) / 2 - 3px);
+  background-image:
+    linear-gradient(
+      to right,
+      transparent var(--margen-x),
+      var(--margen-libro) var(--margen-x),
+      var(--margen-libro) calc(var(--margen-x) + 1px),
+      transparent calc(var(--margen-x) + 1px),
+      transparent calc(var(--margen-x) + 4px),
+      var(--margen-libro) calc(var(--margen-x) + 4px),
+      var(--margen-libro) calc(var(--margen-x) + 5px),
+      transparent calc(var(--margen-x) + 5px)
+    ),
+    var(--textura);
+}
+/* Solo el grano (barra inferior, pestaña actual). */
+@utility papel {
+  background-image: var(--textura);
+}

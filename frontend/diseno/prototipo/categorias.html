@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Categorías y reglas · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="componentes.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button>
+        <button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button>
+        <button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+    <header class="encabezado">
+      <div class="encabezado__titulo"><h1>Categorías y reglas</h1></div>
+      <button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-plus"/></svg>Nueva categoría</button>
+    </header>
+
+    <div class="rejilla rejilla--mitades">
+      <div class="pila">
+      <section class="hoja" aria-labelledby="titulo-cats-gasto">
+        <div class="hoja__cabeza"><h2 id="titulo-cats-gasto">Categorías de gasto</h2></div>
+        <ul class="libreta"><li class="regla">
+              <span class="chip"><span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span><span class="chip__nombre">Mercado<br><span class="detalle">14 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Mercado</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-restaurantes" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-utensils"/></svg></span><span class="chip__nombre">Restaurantes<br><span class="detalle">11 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Restaurantes</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span><span class="chip__nombre">Transporte<br><span class="detalle">38 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Transporte</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-vivienda" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-house"/></svg></span><span class="chip__nombre">Vivienda y servicios<br><span class="detalle">4 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Vivienda y servicios</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-salud" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-heart-pulse"/></svg></span><span class="chip__nombre">Salud<br><span class="detalle">3 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Salud</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-entretenimiento" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ticket"/></svg></span><span class="chip__nombre">Entretenimiento<br><span class="detalle">2 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Entretenimiento</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-compras" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-bag"/></svg></span><span class="chip__nombre">Compras<br><span class="detalle">5 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Compras</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-antojos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ice-cream-cone"/></svg></span><span class="chip__nombre">Antojos<br><span class="detalle">12 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Antojos</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-otros" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shapes"/></svg></span><span class="chip__nombre">Otros<br><span class="detalle">2 movimientos este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Otros</span></button>
+            </li></ul>
+      </section>
+      <section class="hoja" aria-labelledby="titulo-cats-ingreso">
+        <div class="hoja__cabeza"><h2 id="titulo-cats-ingreso">Categorías de ingreso</h2></div>
+        <ul class="libreta"><li class="regla">
+              <span class="chip"><span class="chip__marca c-sueldo" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-briefcase"/></svg></span><span class="chip__nombre">Sueldo<br><span class="detalle">1 movimiento este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Sueldo</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-prestamos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-handshake"/></svg></span><span class="chip__nombre">Préstamos<br><span class="detalle">1 movimiento este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Préstamos</span></button>
+            </li><li class="regla">
+              <span class="chip"><span class="chip__marca c-otros-ingresos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-coins"/></svg></span><span class="chip__nombre">Otros ingresos<br><span class="detalle">1 movimiento este mes</span></span></span>
+              <button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Editar<span class="sr-only"> Otros ingresos</span></button>
+            </li></ul>
+      </section>
+      </div>
+
+      <section class="hoja" aria-labelledby="titulo-reglas">
+        <h2 id="titulo-reglas">Reglas</h2>
+        <p class="ayuda hoja__ayuda">Una regla categoriza sola los movimientos nuevos que cumplen todas sus condiciones. Si dos reglas coinciden, gana la más específica. Se crean al categorizar un movimiento.</p>
+        <ul class="libreta"><li class="regla">
+              <p class="regla__frase">Si es una <strong>transferencia</strong> de <span class="monto">$3.200</span>, va a <span class="chip chip--sm" style="vertical-align: middle"><span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span><strong class="chip__nombre">Transporte</strong></span></p>
+              <button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar<span class="sr-only"> regla</span></button>
+            </li><li class="regla">
+              <p class="regla__frase">Si es una <strong>compra</strong> en «SUPERMERCADO LA ESPIGA», va a <span class="chip chip--sm" style="vertical-align: middle"><span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span><strong class="chip__nombre">Mercado</strong></span></p>
+              <button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar<span class="sr-only"> regla</span></button>
+            </li><li class="regla">
+              <p class="regla__frase">Si es una <strong>transferencia</strong> a «*3000000003», va a <span class="chip chip--sm" style="vertical-align: middle"><span class="chip__marca c-vivienda" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-house"/></svg></span><strong class="chip__nombre">Vivienda y servicios</strong></span></p>
+              <button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar<span class="sr-only"> regla</span></button>
+            </li><li class="regla">
+              <p class="regla__frase">Si es una <strong>compra</strong> en «CINE ESTRELLA», va a <span class="chip chip--sm" style="vertical-align: middle"><span class="chip__marca c-entretenimiento" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ticket"/></svg></span><strong class="chip__nombre">Entretenimiento</strong></span></p>
+              <button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar<span class="sr-only"> regla</span></button>
+            </li><li class="regla">
+              <p class="regla__frase">Si es un <strong>ingreso</strong> de «EMPRESA EJEMPLO S.A.S.», va a <span class="chip chip--sm" style="vertical-align: middle"><span class="chip__marca c-sueldo" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-briefcase"/></svg></span><strong class="chip__nombre">Sueldo</strong></span></p>
+              <button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar<span class="sr-only"> regla</span></button>
+            </li><li class="regla">
+              <p class="regla__frase">Si es un <strong>ingreso</strong> de «CARLOS RUIZ EJEMPLO» por <span class="monto">$400.000</span>, va a <span class="chip chip--sm" style="vertical-align: middle"><span class="chip__marca c-prestamos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-handshake"/></svg></span><strong class="chip__nombre">Préstamos</strong></span></p>
+              <button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar<span class="sr-only"> regla</span></button>
+            </li></ul>
+      </section>
+    </div>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

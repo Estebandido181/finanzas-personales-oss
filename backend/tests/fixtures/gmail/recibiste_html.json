@@ -1,0 +1,40 @@
+{
+  "id": "msg-recibiste-0001",
+  "threadId": "hilo-recibiste-0001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1790694030000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de transferencia recibida (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyAoZWplbXBsbyk8L3RpdGxlPjwvaGVhZD4KPGJvZHk-Cjx0YWJsZSB3aWR0aD0iNjAwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiPgogIDx0cj48dGQ-PGgxPiZpZXhjbDtMaXN0byEgVG9kbyBzYWxpJm9hY3V0ZTsgYmllbiBjb24gdHVzIG1vdmltaWVudG9zPC9oMT48L3RkPjwvdHI-CiAgPHRyPjx0ZD4KICAgIDxwIHN0eWxlPSJmb250LXNpemU6MTRweCI-QmFuY29sb21iaWE6IFJlY2liaXN0ZSB1bmEgdHJhbnNmZXJlbmNpYSBwb3IgJDE2MCwwMDAgZGUgUEVSU09OQSBFSkVNUExPIGVuIHR1IGN1ZW50YSAqKjEyMzQsIGVsIDI5LzA5LzIwMjYgYSBsYXMgMTA6MDAuIFNpIHRpZW5lcyBkdWRhcywgaGFibGVtb3M6IDAxODAwMDAwMDAwMC4gU2llbXByZSBhIHR1IGxhZG8uPC9wPgogIDwvdGQ-PC90cj4KICA8dHI-PHRkIHN0eWxlPSJmb250LXNpemU6MTFweDtjb2xvcjojNzc3Ij4KICAgIDxwPkVzdGUgZXMgdW4gY29ycmVvIGRlIGVqZW1wbG8gaW52ZW50YWRvIHBhcmEgcHJ1ZWJhcy48L3A-CiAgPC90ZD48L3RyPgo8L3RhYmxlPgo8L2JvZHk-PC9odG1sPgo"
+    }
+  }
+}

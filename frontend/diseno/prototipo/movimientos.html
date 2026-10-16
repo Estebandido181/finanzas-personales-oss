@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Movimientos · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="componentes.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button>
+        <button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button>
+        <button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+    <header class="encabezado">
+      <div class="encabezado__titulo">
+        <h1>Movimientos</h1>
+        <nav class="selector-mes" aria-label="Cambiar de mes">
+          <a class="boton boton--quieto" href="#" rel="prev"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Agosto</a>
+          <span class="detalle" style="font-size: var(--texto-base); color: var(--foreground); font-weight: 700">Septiembre de 2026</span>
+        </nav>
+      </div>
+    </header>
+
+    <section aria-label="Filtros" class="pila-sm">
+      <div class="segmentos" role="group" aria-label="Mostrar">
+        <button type="button" class="segmento" aria-pressed="true">Todos</button>
+        <button type="button" class="segmento" aria-pressed="false">Gastos</button>
+        <button type="button" class="segmento" aria-pressed="false">Ingresos</button>
+        <button type="button" class="segmento" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg>Sin categorizar (2)</button>
+      </div>
+      <div class="campo" style="max-width: 20rem">
+        <label class="etiqueta" for="filtro-categoria">Categoría</label>
+        <select class="selector" id="filtro-categoria"><option>Todas las categorías</option><option>Mercado</option><option>Restaurantes</option></select>
+      </div>
+    </section>
+
+    <ul class="dias" aria-label="Movimientos de septiembre, por día">
+          <li class="hoja">
+            <h2 class="dia"><span>Hoy, miércoles 30 de septiembre</span><span class="detalle">Gastado: <span class="monto">$11.700</span></span></h2>
+            <ul class="libreta">
+            <li class="movimiento movimiento--pendiente">
+              <span class="chip__marca chip__marca--vacia c-sin" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">PANADERIA EL TRIGAL</p>
+                <p class="movimiento__meta">Compra · 7:40 a. m.</p>
+                <p class="movimiento__meta movimiento__origen">Sin categorizar</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$8.500</span></div>
+              <div class="movimiento__panel">
+                <p class="etiqueta" id="elegir-1">¿En qué categoría va? Toca una:</p>
+                <div class="opciones-categoria" role="group" aria-labelledby="elegir-1" style="margin-top: var(--espacio-2)"><button type="button" class="opcion-categoria"><span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span><span>Mercado</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-restaurantes" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-utensils"/></svg></span><span>Restaurantes</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span><span>Transporte</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-vivienda" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-house"/></svg></span><span>Vivienda y servicios</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-salud" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-heart-pulse"/></svg></span><span>Salud</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-entretenimiento" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ticket"/></svg></span><span>Entretenimiento</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-compras" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-bag"/></svg></span><span>Compras</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-antojos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ice-cream-cone"/></svg></span><span>Antojos</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-otros" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shapes"/></svg></span><span>Otros</span></button></div>
+              </div>
+            </li><li class="movimiento">
+              <span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">*3000000001</p>
+                <p class="movimiento__meta">Transferencia · 7:12 a. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><strong>Transporte</strong>, por regla: transferencia de <span class="monto">$3.200</span></span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$3.200</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de *3000000001</span></button></div>
+            </li>
+            </ul>
+          </li><li class="hoja">
+            <h2 class="dia"><span>Martes 29 de septiembre</span><span class="detalle">Gastado: <span class="monto">$183.850</span></span></h2>
+            <ul class="libreta">
+            <li class="movimiento">
+              <span class="chip__marca c-restaurantes" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-utensils"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">LAURA GÓMEZ EJEMPLO</p>
+                <p class="movimiento__meta">Transferencia · 9:28 p. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg><strong>Restaurantes</strong>, a mano</span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$6.200</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de LAURA GÓMEZ EJEMPLO</span></button></div><div class="movimiento__panel">
+                <div class="aviso aviso--exito" role="status">
+                  <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>
+                  <div class="aviso__cuerpo">
+                    <p><span class="aviso__titulo">Guardado en Restaurantes.</span> ¿Categorizar igual las siguientes? Crea una regla con un toque:</p>
+                    <div class="aviso__acciones ofertas-regla">
+                      <button type="button" class="boton">Transferencias a LAURA GÓMEZ EJEMPLO</button>
+                      <button type="button" class="boton">Transferencias de <span class="monto">$6.200</span></button>
+                      <button type="button" class="boton">Las dos cosas juntas</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li><li class="movimiento">
+              <span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">SUPERMERCADO LA ESPIGA</p>
+                <p class="movimiento__meta">Compra · 6:15 p. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><strong>Mercado</strong>, por regla: compra en «SUPERMERCADO LA ESPIGA»</span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$132.449,50</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de SUPERMERCADO LA ESPIGA</span></button></div>
+            </li><li class="movimiento">
+              <span class="chip__marca c-salud" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-heart-pulse"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">DROGUERIA SAN ROQUE</p>
+                <p class="movimiento__meta">Compra · 1:10 p. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg><strong>Salud</strong>, a mano</span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$42.000,50</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de DROGUERIA SAN ROQUE</span></button></div>
+            </li><li class="movimiento">
+              <span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">*3000000002</p>
+                <p class="movimiento__meta">Transferencia · 7:05 a. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><strong>Transporte</strong>, por regla: transferencia de <span class="monto">$3.200</span></span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$3.200</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de *3000000002</span></button></div>
+            </li>
+            </ul>
+          </li><li class="hoja">
+            <h2 class="dia"><span>Lunes 28 de septiembre</span><span class="detalle">Gastado: <span class="monto">$63.900</span></span></h2>
+            <ul class="libreta">
+            <li class="movimiento">
+              <span class="chip__marca c-sueldo" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-briefcase"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">EMPRESA EJEMPLO S.A.S.</p>
+                <p class="movimiento__meta">Ingreso · 8:00 a. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><strong>Sueldo</strong>, por regla: ingreso de «EMPRESA EJEMPLO S.A.S.»</span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto monto--positivo">+$4.800.000</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de EMPRESA EJEMPLO S.A.S.</span></button></div>
+            </li><li class="movimiento movimiento--pendiente">
+              <span class="chip__marca chip__marca--vacia c-sin" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">TIENDA DON PEPE EJEMPLO</p>
+                <p class="movimiento__meta">Compra · 5:52 p. m.</p>
+                <p class="movimiento__meta movimiento__origen">Sin categorizar</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$13.000</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton">Categorizar<span class="sr-only"> TIENDA DON PEPE EJEMPLO</span></button></div>
+            </li><li class="movimiento">
+              <span class="chip__marca c-restaurantes" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-utensils"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">RESTAURANTE DOÑA TERE</p>
+                <p class="movimiento__meta">Compra · 1:30 p. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg><strong>Restaurantes</strong>, a mano</span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$38.900</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de RESTAURANTE DOÑA TERE</span></button></div>
+            </li><li class="movimiento">
+              <span class="chip__marca c-antojos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ice-cream-cone"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">HELADERIA POLO NORTE</p>
+                <p class="movimiento__meta">Compra · 4:20 p. m.</p>
+                <p class="movimiento__meta movimiento__origen"><span class="origen"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg><strong>Antojos</strong>, a mano</span></p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$12.000</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg>Cambiar<span class="sr-only"> categoría de HELADERIA POLO NORTE</span></button></div>
+            </li>
+            </ul>
+          </li>
+    </ul>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

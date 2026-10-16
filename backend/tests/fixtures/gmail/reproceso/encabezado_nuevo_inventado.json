@@ -1,0 +1,40 @@
+{
+  "id": "msg-r001",
+  "threadId": "hilo-msg-r001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1786547100000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Aviso con encabezado nuevo (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyAoZWplbXBsbyk8L3RpdGxlPjwvaGVhZD4KPGJvZHk-Cjx0YWJsZSB3aWR0aD0iNjAwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiPgogIDx0cj48dGQ-PGgxPkVuY2FiZXphZG8gbnVldm8gZGUgZWplbXBsbyBpbnZlbnRhZG88L2gxPjwvdGQ-PC90cj4KICA8dHI-PHRkPgogICAgPHAgc3R5bGU9ImZvbnQtc2l6ZToxNHB4Ij5CYW5jb2xvbWJpYTogQ29tcHJhc3RlICQxMi4zNDUsMDAgZW4gVElFTkRBIFJFUFJPQ0VTTyBFSkVNUExPIGNvbiB0dSBULkRlYiAqMTIzNCwKICAgICAgZWwgMTIvMDgvMjAyNiBhIGxhcyZuYnNwOzEwOjA1LiBTaSB0aWVuZXMgZHVkYXMsIGVuY3VlbnRyYW5vcyBhcXVpOiA2MDQwMDAwMDAwIG8KICAgICAgMDE4MDAwMDAwMDAwLiBFc3RhbW9zIGNlcmNhLjwvcD4KICA8L3RkPjwvdHI-CiAgPHRyPjx0ZD48cD5Fc3RlIGVzIHVuIGNvcnJlbyBkZSBlamVtcGxvIGludmVudGFkbyBwYXJhIHBydWViYXMuPC9wPjwvdGQ-PC90cj4KPC90YWJsZT4KPC9ib2R5PjwvaHRtbD4K"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+*.db
+*.sqlite*
+.env
+.env.*
+!.env.example
+.git
+.venv
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+**/.hypothesis
+**/*.egg-info
+frontend/dist
+frontend/test-results
+frontend/playwright-report
+frontend/capturas

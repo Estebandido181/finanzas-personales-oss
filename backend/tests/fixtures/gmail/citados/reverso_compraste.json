@@ -1,0 +1,40 @@
+{
+  "id": "citado-0001",
+  "threadId": "hilo-citado-0001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1788000000000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Reverso de transacción (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 538,
+      "data": "PCFET0NUWVBFIGh0bWw-PGh0bWw-PGhlYWQ-PG1ldGEgY2hhcnNldD0idXRmLTgiPjx0aXRsZT5Ob3ZlZGFkIChlamVtcGxvKTwvdGl0bGU-PC9oZWFkPjxib2R5Pjx0YWJsZSB3aWR0aD0iNjAwIj48dHI-PHRkPjxoMT4maWV4Y2w7TGlzdG8hIFRvZG8gc2FsaSZvYWN1dGU7IGJpZW4gY29uIHR1cyBtb3ZpbWllbnRvczwvaDE-PC90ZD48L3RyPjx0cj48dGQ-PHA-UmV2ZXJzYW1vcyBsYSBzaWd1aWVudGUgdHJhbnNhY2NpJm9hY3V0ZTtuIHkgZGV2b2x2aW1vcyBlbCBkaW5lcm8gYSB0dSBjdWVudGE6PC9wPjxwPkJhbmNvbG9tYmlhOiBDb21wcmFzdGUgJDg3LjM1MCwwMCBlbiBTVVBFUk1FUkNBRE8gRUpFTVBMTyBjb24gdHUgVC5EZWIgKjQzMjEsIGVsIDEyLzA4LzIwMjYgYSBsYXMgMTk6MDUuPC9wPjxwPlNpIHRpZW5lcyBkdWRhcywgaGFibGVtb3M6IDAxODAwMDAwMDAwMC48L3A-PHA-RXN0ZSBlcyB1biBjb3JyZW8gaW52ZW50YWRvIHBhcmEgcHJ1ZWJhcyAow610ZW0gMjEpLjwvcD48L3RkPjwvdHI-PC90YWJsZT48L2JvZHk-PC9odG1sPg"
+    }
+  }
+}

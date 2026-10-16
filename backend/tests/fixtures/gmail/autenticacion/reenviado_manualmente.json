@@ -1,0 +1,36 @@
+{
+  "id": "aut-0017",
+  "threadId": "hilo-aut-0017",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1787325420000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/plain",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com; dkim=pass header.i=@example.org; spf=pass smtp.mailfrom=persona.ejemplo@example.org; dmarc=pass header.from=example.org"
+      },
+      {
+        "name": "From",
+        "value": "Persona Ejemplo <persona.ejemplo@example.org>"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de compra (ataque de ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/plain; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "LS0tLS0tLS0tLSBGb3J3YXJkZWQgbWVzc2FnZSAtLS0tLS0tLS0KRGU6IEJhbmNvbG9tYmlhIDxhbGVydGFzeW5vdGlmaWNhY2lvbmVzQGFuLm5vdGlmaWNhY2lvbmVzYmFuY29sb21iaWEuY29tPgoKQmFuY29sb21iaWE6IENvbXByYXN0ZSAkOTkuOTk5LDAwIGVuIFRJRU5EQSBGQUxTQSBFSkVNUExPIGNvbiB0dSBULkRlYiAqOTk5OSwgZWwgMjEvMDgvMjAyNiBhIGxhcyAxMDozMC4"
+    }
+  }
+}

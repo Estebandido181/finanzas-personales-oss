@@ -1,0 +1,73 @@
+# Valores EXACTOS que scripts/revisar_datos.py deja pasar (ítem 24).
+#
+# Formato: un valor por línea, seguido de "  # motivo". Solo valores exactos
+# y completos, tal como los recorta la regla: nunca un pedazo que sirva de
+# patrón. Así una excepción no abre la puerta a datos parecidos.
+# Cada cambio a este archivo se ve en el diff del PR y lo revisa el dueño.
+# La lista privada del dueño (secreto DATOS_PROHIBIDOS) tiene prioridad sobre
+# este archivo: un término suyo salta aunque aparezca aquí.
+
+# --- Remitente público del banco y encabezados de autenticación de prueba ---
+alertasynotificaciones@an.notificacionesbancolombia.com  # remitente oficial de los avisos (público)
+alertasynotificaciones@ayn.notificacionesbancolombia.com  # segundo remitente oficial, pagos PSE (público, D30)
+smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com  # encabezado SPF con el remitente oficial
+header.i=@an.notificacionesbancolombia.com  # firma DKIM del subdominio oficial del banco
+header.i=@notificacionesbancolombia.com  # firma DKIM del dominio oficial del banco
+b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com  # dirección de rebote con dueño inventado (fixtures anonimizados)
+b-000000001-dueno.ejemplo=gmail.com@trans.an  # la misma, en f-strings de backend/tests/modulos/sincronizacion/test_autenticacion_estricta.py (sigue "{B}")
+b-...=gmail.com@trans.an.banco  # comentario de ejemplo en backend/finanzas/gmail.py
+
+# --- Dominios parecidos al del banco: las pruebas de autenticación los rechazan ---
+alertasynotificaciones@an-notificacionesbancolombia.com  # dominio falso de prueba
+alertasynotificaciones@an.notificacionesbancol0mbia.com  # dominio falso de prueba (cero por o)
+alertasynotificaciones@an.notificacionesbancolombi  # dominio falso de prueba (cortado)
+alertasynotificaciones@an.notificacionesbancolombia.co  # dominio falso de prueba (.co)
+alertasynotificaciones@notificacionesbancolombia.com  # dominio falso de prueba (sin subdominio)
+smtp.mailfrom=alertasynotificaciones@an-notificacionesbancolombia.com  # SPF de prueba con dominio falso
+smtp.mailfrom=alertasynotificaciones@an.notificacionesbancol0mbia.com  # SPF de prueba con dominio falso
+smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombi  # SPF de prueba con dominio falso
+smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.co  # SPF de prueba con dominio falso
+smtp.mailfrom=alertasynotificaciones@notificacionesbancolombia.com  # SPF de prueba con dominio falso
+header.i=@an-notificacionesbancolombia.com  # DKIM de prueba con dominio falso
+header.i=@notificacionesbancol0mbia.com  # DKIM de prueba con dominio falso
+header.i=@notificacionesbancolombia.co  # DKIM de prueba con dominio falso
+alertas@bancolombia-falso.com  # dominio falso de prueba
+alertas@ejemplo-falso.com  # dominio falso de prueba
+rebote@bancolombia.com  # rebote falso en encabezados de autenticación de prueba
+smtp.mailfrom=rebote@bancolombia.com  # el mismo, dentro del encabezado SPF
+rebote@evilnotificacionesbancolombia.com  # rebote falso en encabezados de autenticación de prueba
+smtp.mailfrom=rebote@evilnotificacionesbancolombia.com  # el mismo, dentro del encabezado SPF
+rebote@sendgrid.net  # rebote de un tercero (servicio público) en una prueba de autenticación
+smtp.mailfrom=rebote@sendgrid.net  # el mismo, dentro del encabezado SPF
+header.i=@sendgrid.net  # DKIM de un tercero (servicio público) en pruebas de autenticación
+header.i=@sendclean.co.in  # DKIM de un tercero (servicio público) en pruebas de autenticación
+
+# --- Correos inventados en pruebas ---
+dueno.ejemplo@gmail.com  # dueño inventado de las pruebas de Gmail
+persona@ejemplo.com  # llave de correo inventada (prueba de Bre-B)
+a@b.com  # remitente inventado (prueba del filtro de búsqueda)
+c@d.com  # remitente inventado (prueba del filtro de búsqueda)
+x@evil.com  # atacante inventado en pruebas de seguridad
+1@evil.com  # URL maliciosa inventada (localhost:1@evil.com) en pruebas del login de Gmail
+an.{DOMINIO}@evil.com  # f-string de backend/tests/modulos/sincronizacion/test_autenticacion.py (dominio de atacante)
+
+# --- Direcciones técnicas públicas ---
+git@github.com  # usuario SSH genérico de GitHub en deploy/GUIA.md
+noreply@anthropic.com  # línea de atribución (Co-Authored-By) en los mensajes de commit
+
+# --- Credenciales falsas de las pruebas de Gmail ---
+ya29.token-de-acceso-inventado-para-pruebas  # token inventado (backend/tests/modulos/sincronizacion/test_gmail.py)
+ya29.token-renovado-inventado  # token inventado (backend/tests/modulos/sincronizacion/test_gmail.py)
+ya29.token-de-acceso-inventado-sin-navegador  # token inventado (backend/tests/modulos/sincronizacion/test_gmail_sin_navegador.py)
+ya29.token-bordes-inventado  # token inventado (backend/tests/modulos/sincronizacion/test_gmail_sin_navegador_bordes.py)
+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  # secreto OAuth inventado (backend/tests/modulos/sincronizacion/test_gmail_sin_navegador.py)
+GOCSPX-secreto-bordes-inventado  # secreto OAuth inventado (backend/tests/modulos/sincronizacion/test_gmail_sin_navegador_bordes.py)
+
+# --- Llaves inventadas del primer borrador del prototipo (commit 27b359b, ítem 11) ---
+# Ya se cambiaron por 300000000x, pero siguen en el historial que revisa el PR a main.
+3000001234  # llave inventada del prototipo (historial)
+3000004567  # llave inventada del prototipo (historial)
+3000005678  # llave inventada del prototipo (historial)
+3000002468  # destino inventado de regresiones41; colisión con otra cuenta ficticia
+3111112468  # segundo destino inventado41, mismo sufijo para comprobar choque y rollback
+3000001357  # destino inventado41 de pregunta de conciliación pendiente

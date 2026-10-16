@@ -1,0 +1,15 @@
+# Respaldo diario a las 03:30 (hora del servidor; la guía lo deja en hora de
+# Colombia). Para cambiar la hora: sudo systemctl edit finanzas-respaldo.timer
+
+[Unit]
+Description=Finanzas personales: respaldo diario
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+# Si la VM estaba apagada a esa hora, respalda al arrancar.
+Persistent=true
+RandomizedDelaySec=10min
+Unit=finanzas-respaldo.service
+
+[Install]
+WantedBy=timers.target

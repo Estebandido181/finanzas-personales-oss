@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inicio · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="componentes.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button>
+        <button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button>
+        <button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+    <header class="encabezado">
+      <div class="encabezado__titulo">
+        <nav class="selector-mes" aria-label="Cambiar de mes">
+          <a class="boton boton--quieto" href="#" rel="prev"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Agosto</a>
+        </nav>
+        <h1>Septiembre de 2026</h1>
+      </div>
+      <div class="sincronizacion">
+        <p class="sincronizacion__estado"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-check"/></svg><span>Sincronizado hoy a las 6:02 a. m.</span></p>
+        <button type="button" class="boton"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-refresh-cw"/></svg>Sincronizar ahora</button>
+      </div>
+    </header>
+
+    <section class="aviso aviso--advertencia" aria-labelledby="titulo-pendientes">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg>
+      <div class="aviso__cuerpo">
+        <p class="aviso__titulo" id="titulo-pendientes">3 movimientos sin categorizar</p>
+        <p>Suman <span class="monto">$27.700</span>. Mientras no tengan categoría, aparecen como «Sin categorizar» en el gráfico.</p>
+        <div class="aviso__acciones"><a class="boton boton--principal" href="movimientos.html">Categorizar ahora</a></div>
+      </div>
+    </section>
+
+    <section class="hoja resumen" aria-label="Resumen de septiembre">
+      <div class="resumen__principal">
+        <p class="cifra__nombre">Gastado en septiembre</p>
+        <p><span class="subrayado-doble"><span class="monto monto--grande">$1.842.450</span></span></p>
+        <p class="ayuda">Compras y transferencias. Los ingresos y los ajustes de saldo no cuentan como gasto.</p>
+      </div>
+      <div class="resumen__secundarios">
+        <div class="cifra">
+          <p class="cifra__nombre">Saldo actual</p>
+          <p><span class="monto monto--medio">$4.739.150</span></p>
+        </div>
+        <div class="cifra">
+          <p class="cifra__nombre">Ingresos de septiembre</p>
+          <p><span class="monto monto--medio monto--positivo">+$5.350.000</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="rejilla rejilla--7-5">
+      <section class="hoja" aria-labelledby="titulo-en-que">
+        <div class="hoja__cabeza">
+          <h2 id="titulo-en-que">¿En qué se fue?</h2>
+          <a href="movimientos.html" class="enlace">Ver movimientos</a>
+        </div>
+        <div class="vista-grafico" role="group" aria-labelledby="ver-como">
+          <span class="vista-grafico__etiqueta" id="ver-como">Ver como</span>
+          <div class="segmentos">
+            <button type="button" class="segmento" data-elegir-grafico="barras" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chart-bar-decreasing"/></svg>Barras</button>
+            <button type="button" class="segmento" data-elegir-grafico="dona" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chart-pie"/></svg>Dona</button>
+          </div>
+        </div>
+        <div class="dona"><svg viewBox="-120 -120 240 240" aria-hidden="true" focusable="false"><path class="dona__tajada c-mercado" d="M0 -110A110 110 0 0 1 109.58 9.6L77.7 6.81A78 78 0 0 0 0 -78Z"/><path class="dona__tajada c-vivienda" d="M109.58 9.6A110 110 0 0 1 8.31 109.69L5.89 77.78A78 78 0 0 0 77.7 6.81Z"/><path class="dona__tajada c-restaurantes" d="M8.31 109.69A110 110 0 0 1 -88.96 64.7L-63.08 45.88A78 78 0 0 0 5.89 77.78Z"/><path class="dona__tajada c-transporte" d="M-88.96 64.7A110 110 0 0 1 -110 -0.83L-78 -0.59A78 78 0 0 0 -63.08 45.88Z"/><path class="dona__tajada c-compras" d="M-110 -0.83A110 110 0 0 1 -93.61 -57.76L-66.38 -40.96A78 78 0 0 0 -78 -0.59Z"/><path class="dona__tajada c-antojos" d="M-93.61 -57.76A110 110 0 0 1 -69.98 -84.87L-49.62 -60.18A78 78 0 0 0 -66.38 -40.96Z"/><path class="dona__tajada c-salud" d="M-69.98 -84.87A110 110 0 0 1 -43.15 -101.18L-30.6 -71.75A78 78 0 0 0 -49.62 -60.18Z"/><path class="dona__tajada c-entretenimiento" d="M-43.15 -101.18A110 110 0 0 1 -20.95 -107.99L-14.86 -76.57A78 78 0 0 0 -30.6 -71.75Z"/><path class="dona__tajada c-otros" d="M-20.95 -107.99A110 110 0 0 1 -10.38 -109.51L-7.36 -77.65A78 78 0 0 0 -14.86 -76.57Z"/><path class="dona__tajada dona__tajada--vacia c-sin" d="M-10.38 -109.51A110 110 0 0 1 -0 -110L-0 -78A78 78 0 0 0 -7.36 -77.65Z"/></svg><div class="dona__centro" aria-hidden="true"><span class="cifra__nombre">Total gastado</span><span class="monto">$1.842.450</span></div></div>
+        <ul class="barras" aria-label="Gasto por categoría en septiembre">
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span><span class="chip__nombre">Mercado</span></span>
+            <span class="monto">$486.249,50</span>
+            <span class="barra__pista"><span class="barra__relleno c-mercado" style="--p:100.0%"></span><span class="barra__porcentaje">26,4 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-vivienda" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-house"/></svg></span><span class="chip__nombre">Vivienda y servicios</span></span>
+            <span class="monto">$412.800</span>
+            <span class="barra__pista"><span class="barra__relleno c-vivienda" style="--p:84.9%"></span><span class="barra__porcentaje">22,4 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-restaurantes" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-utensils"/></svg></span><span class="chip__nombre">Restaurantes</span></span>
+            <span class="monto">$298.400</span>
+            <span class="barra__pista"><span class="barra__relleno c-restaurantes" style="--p:61.4%"></span><span class="barra__porcentaje">16,2 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span><span class="chip__nombre">Transporte</span></span>
+            <span class="monto">$186.600</span>
+            <span class="barra__pista"><span class="barra__relleno c-transporte" style="--p:38.4%"></span><span class="barra__porcentaje">10,1 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-compras" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-bag"/></svg></span><span class="chip__nombre">Compras</span></span>
+            <span class="monto">$159.900</span>
+            <span class="barra__pista"><span class="barra__relleno c-compras" style="--p:32.9%"></span><span class="barra__porcentaje">8,7 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-antojos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ice-cream-cone"/></svg></span><span class="chip__nombre">Antojos</span></span>
+            <span class="monto">$96.300</span>
+            <span class="barra__pista"><span class="barra__relleno c-antojos" style="--p:19.8%"></span><span class="barra__porcentaje">5,2 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-salud" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-heart-pulse"/></svg></span><span class="chip__nombre">Salud</span></span>
+            <span class="monto">$84.000,50</span>
+            <span class="barra__pista"><span class="barra__relleno c-salud" style="--p:17.3%"></span><span class="barra__porcentaje">4,6 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-entretenimiento" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ticket"/></svg></span><span class="chip__nombre">Entretenimiento</span></span>
+            <span class="monto">$62.000</span>
+            <span class="barra__pista"><span class="barra__relleno c-entretenimiento" style="--p:12.8%"></span><span class="barra__porcentaje">3,4 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca c-otros" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shapes"/></svg></span><span class="chip__nombre">Otros</span></span>
+            <span class="monto">$28.500</span>
+            <span class="barra__pista"><span class="barra__relleno c-otros" style="--p:5.9%"></span><span class="barra__porcentaje">1,5 %</span></span>
+          </li>
+          <li class="barra">
+            <span class="chip chip--sm"><span class="chip__marca chip__marca--vacia c-sin" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span><span class="chip__nombre">Sin categorizar</span></span>
+            <span class="monto">$27.700</span>
+            <span class="barra__pista"><span class="barra__relleno barra__relleno--vacia c-sin" style="--p:5.7%"></span><span class="barra__porcentaje">1,5 %</span></span>
+          </li>
+        </ul>
+        <div class="total"><span>Total gastado</span><span class="subrayado-doble"><span class="monto">$1.842.450</span></span></div>
+      </section>
+
+      <section class="hoja" aria-labelledby="titulo-ultimos">
+        <div class="hoja__cabeza">
+          <h2 id="titulo-ultimos">Últimos movimientos</h2>
+        </div>
+        <ul class="libreta">
+            <li class="movimiento">
+              <span class="chip__marca chip__marca--vacia c-sin" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">PANADERIA EL TRIGAL</p>
+                <p class="movimiento__meta">Sin categorizar · 7:40 a. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$8.500</span></div>
+            </li>
+            <li class="movimiento">
+              <span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">*3000000001</p>
+                <p class="movimiento__meta">Transporte · 7:12 a. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$3.200</span></div>
+            </li>
+            <li class="movimiento">
+              <span class="chip__marca chip__marca--vacia c-sin" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">LAURA GÓMEZ EJEMPLO</p>
+                <p class="movimiento__meta">Sin categorizar · 9:28 p. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$6.200</span></div>
+            </li>
+            <li class="movimiento">
+              <span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">SUPERMERCADO LA ESPIGA</p>
+                <p class="movimiento__meta">Mercado · 6:15 p. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto">$132.449,50</span></div>
+            </li>
+        </ul>
+        <p class="grupo"><a class="boton boton--ancho" href="movimientos.html">Ver todos los movimientos</a></p>
+      </section>
+    </div>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

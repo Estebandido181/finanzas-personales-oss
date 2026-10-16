@@ -1,0 +1,449 @@
+/*
+ * Sistema de diseño "libreta de cuentas" (v2, D18) — fuente única de tokens.
+ *
+ * Estilo «Libro mayor, noche petróleo» (variante D, elegida por el dueño):
+ * en claro, páginas de un libro mayor con grano de papel; en oscuro, verde
+ * petróleo con botón mostaza. Hojas y botones sin borde de tinta ni sombra
+ * sólida: papel sobre papel (ver SISTEMA.md).
+ *
+ * Este archivo es lo que importa el frontend (ítem 12). Solo declara variables
+ * y las fuentes; los componentes se describen en SISTEMA.md y se construyen
+ * sobre shadcn/ui usando estos nombres.
+ *
+ * Nombres: los tokens de color usan los mismos nombres que shadcn/ui
+ * (--background, --foreground, --card, --primary, --muted, --border,
+ * --destructive, --ring, --sidebar-*, --chart-*), así el ítem 12 los conecta a
+ * Tailwind con `@theme inline { --color-background: var(--background); … }`
+ * sin traducir nada. Lo que shadcn no trae (sombras de papel, reglas de libreta,
+ * avisos, categorías, tipografía de montos) lleva nombres propios en español.
+ *
+ * Modo claro/oscuro: por defecto sigue al sistema (prefers-color-scheme). Para
+ * forzar un modo se pone data-tema="claro" | "oscuro" en <html>. La clase
+ * `.dark` también activa el oscuro, porque es la convención de shadcn.
+ *
+ * Todos los contrastes están medidos (fórmula WCAG 2.x) en SISTEMA.md.
+ * Si cambias un color, vuelve a medir: no se aceptan estimaciones.
+ */
+
+/* ---------------------------------------------------------------- Fuentes */
+/* Las tres familias son de licencia libre (SIL OFL 1.1) y se sirven desde el
+ * propio servidor: nada de CDN de fuentes en producción (privacidad y CSP
+ * estricta). Solo el subconjunto latino, que cubre español (á, é, ñ, ¿, ¡) y
+ * $, y solo los pesos que se usan. font-display: swap para que el texto se vea
+ * de inmediato con la fuente de respaldo mientras llega la definitiva.
+ * Alegreya y Alegreya Sans: Huerta Tipográfica (woff2 del paquete @fontsource). */
+@font-face {
+  font-family: "Alegreya";
+  src: url("fuentes/alegreya-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("fuentes/alegreya-sans-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("fuentes/alegreya-sans-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("fuentes/alegreya-sans-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("fuentes/courier-prime-400-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("fuentes/courier-prime-700-latin.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------ Tokens que no cambian con el modo */
+:root {
+  /* Familias. La de máquina de escribir es SOLO para montos (D18): nunca en
+   * títulos, botones ni textos, porque en frases largas cansa y "envejece".
+   * Títulos: Alegreya (serif caligráfica de libro, cálida). Texto: Alegreya
+   * Sans, su pareja humanista. */
+  --fuente-titulos: "Alegreya", Georgia, "Times New Roman", serif;
+  --fuente-texto: "Alegreya Sans", "Segoe UI", Roboto, system-ui, sans-serif;
+  --fuente-montos: "Courier Prime", "Courier New", Courier, ui-monospace, monospace;
+
+  /* Escala tipográfica (razón ~1,25). Alegreya Sans tiene el ojo pequeño:
+   * el texto normal va a 17 px y el pequeño a 15 px (se leen como 16 y 14 de
+   * la letra anterior). Ningún texto baja de 15 px. */
+  --texto-sm: 0.9375rem;  /* 15 px: ayudas, detalles de una fila */
+  --texto-base: 1.0625rem; /* 17 px: texto normal, botones, campos */
+  --texto-lg: 1.125rem;   /* 18 px: títulos de tarjeta (h3) */
+  --texto-xl: 1.375rem;   /* 22 px: títulos de sección (h2) */
+  --texto-2xl: 1.75rem;   /* 28 px: título de pantalla en celular (h1) */
+  --texto-3xl: 2.25rem;   /* 36 px: título de pantalla en computador */
+  /* Monto principal (saldo, gasto del mes). clamp: en 390 px cabe
+   * "$ 12.345.678,90" en una línea con la letra monoespaciada, que es ancha. */
+  --texto-monto-grande: clamp(1.75rem, 1.2rem + 2.2vw, 2.5rem);
+
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-fuerte: 700;
+
+  --interlineado-titulos: 1.15;
+  --interlineado-texto: 1.5;
+  --interlineado-montos: 1.2;
+  /* Alegreya no necesita apretarse. */
+  --tracking-titulos: 0;
+
+  /* Espaciado: múltiplos de 4 px. */
+  --espacio-1: 0.25rem;  /* 4 */
+  --espacio-2: 0.5rem;   /* 8 */
+  --espacio-3: 0.75rem;  /* 12 */
+  --espacio-4: 1rem;     /* 16 */
+  --espacio-5: 1.25rem;  /* 20 */
+  --espacio-6: 1.5rem;   /* 24 */
+  --espacio-8: 2rem;     /* 32 */
+  --espacio-10: 2.5rem;  /* 40 */
+  --espacio-12: 3rem;    /* 48 */
+  --espacio-16: 4rem;    /* 64 */
+
+  /* Espaciado con nombre: "que la app respire" (ajuste del dueño al ítem 11).
+   * Las pantallas usan estos, no la escala suelta, para que el aire sea el
+   * mismo en todas. Regla de fondo: el espacio ENTRE bloques es siempre
+   * mayor que el espacio DENTRO de un bloque, así se ve qué va junto sin
+   * necesidad de más bordes. Valores del celular; el computador los agranda
+   * más abajo (@media ≥ 900 px). */
+  --espacio-pagina: 1.25rem;        /* 20: margen lateral de la página */
+  --espacio-bloques: 2rem;          /* 32: entre hojas, avisos y secciones de una pantalla */
+  --espacio-hoja: 1.25rem;          /* 20: relleno interior de una hoja */
+  --espacio-cabeza-hoja: 1.25rem;   /* 20: del título de la hoja a su contenido */
+  --espacio-grupo: 1.75rem;         /* 28: entre grupos dentro de una hoja (formulario y aviso, lista y nota) */
+  --espacio-fila: 1rem;             /* 16: arriba y abajo de cada fila de libreta (movimientos, reglas, categorías) */
+  --espacio-fila-grafico: 0.75rem;  /* 12: filas del gráfico, que son 10 o más y se leen como tabla */
+  --espacio-texto: 0.5rem;          /* 8: título → ayuda, etiqueta → campo, nombre → cifra */
+
+  /* Esquinas poco redondeadas (D18). --radius es el nombre de shadcn. */
+  --radius: 4px;          /* tarjetas, botones, campos, diálogos */
+  --radio-chip: 2px;      /* chip de categoría, etiquetas */
+  --radio-barra: 1px;     /* barras del gráfico: casi rectas, como tinta */
+
+  /* Bordes finos. */
+  --borde-fino: 1px;
+  --borde-foco: 2px;
+
+  /* Canto suave de botones y selectores (no es un borde de tinta). Las
+   * sombras de papel cambian con el modo: van en cada bloque de color. */
+  --borde-suave: color-mix(in srgb, var(--foreground) 20%, transparent);
+
+  /* Áreas táctiles: nada tocable mide menos de 44 × 44 px. */
+  --tactil-min: 44px;
+  --alto-barra-inferior: 64px;
+  --ancho-barra-lateral: 248px;
+  --ancho-contenido: 64rem; /* 1024 px: ancho máximo del contenido */
+
+  /* Movimiento: solo en respuesta a una acción (presionar, abrir). */
+  --duracion-corta: 120ms;
+  --curva: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* En el computador hay más pantalla: el aire crece con ella. */
+@media (min-width: 900px) {
+  :root {
+    --espacio-pagina: 3rem;         /* 48 */
+    --espacio-bloques: 2.5rem;      /* 40 */
+    --espacio-hoja: 2rem;           /* 32 */
+    --espacio-cabeza-hoja: 1.5rem;  /* 24 */
+    --espacio-grupo: 2rem;          /* 32 */
+  }
+}
+
+/* ------------------------------------------------------------ Modo claro */
+/* Papel envejecido y tinta sepia. El papel del fondo es más oscuro que la
+ * "hoja": la hoja se separa por el tono y una sombra difusa, no por un
+ * borde. */
+:root,
+:root[data-tema="claro"] {
+  color-scheme: light;
+
+  --background: #E6DAC0;          /* papel */
+  --foreground: #33241A;          /* tinta café */
+  --card: #F5EDDB;                /* hoja */
+  --card-foreground: #33241A;
+  --popover: #F5EDDB;
+  --popover-foreground: #33241A;
+
+  /* El botón principal es tinta sepia sobre papel (no un color de marca): la
+   * acción importante se ve "escrita con tinta", y ningún color de acento
+   * compite con los de las categorías. */
+  --primary: #4A3223;
+  --primary-foreground: #F5EDDB;
+  --secondary: #EADFC8;
+  --secondary-foreground: #33241A;
+  --muted: #EADFC8;
+  --muted-foreground: #655041;    /* texto secundario: 5,5:1 sobre papel */
+  --accent: #E9DDC4;              /* fondo al pasar el cursor */
+  --accent-foreground: #33241A;
+
+  /* Tinta roja de libro contable: borrar, errores y montos que restan. */
+  --destructive: #983224;
+  --destructive-foreground: #F5EDDB;
+
+  --border: #6E5846;              /* rayas de total y de día (reglas de contabilidad) */
+  --input: #7C6654;               /* borde de campos: 4,6:1 sobre la hoja (≥ 3:1 exigido) */
+  --ring: #2F5F8A;                /* foco: tinta azul, distinto de todo lo demás */
+  --regla: #CFC3A6;               /* doble raya bajo el título de una hoja y divisiones internas (decorativas) */
+  --sombra: #4A3223;              /* color base de sombras (compatibilidad) */
+  --velo: rgb(43 29 20 / 0.55);   /* fondo detrás de un diálogo */
+
+  /* Estados. Cada aviso usa fondo suave + texto en --foreground + ícono. */
+  --exito: #3C5A2E;
+  --advertencia: #7A5500;
+  --aviso-exito-fondo: #E3E6CC;
+  --aviso-advertencia-fondo: #F2E1B0;
+  --aviso-error-fondo: #F2D9CD;
+  --aviso-info-fondo: #DDE3E0;
+
+  /* Montos: los que suman (ingresos, ajuste a favor) en verde de tinta; los
+   * que restan en ajustes, en rojo de tinta. Los gastos van en tinta normal:
+   * son lo habitual y pintarlos todos de rojo sería ruido. */
+  --monto-positivo: #3C5A2E;
+  --monto-negativo: #983224;
+
+  /* Barra lateral (computador) y barra inferior (celular). */
+  --sidebar: #DDD0B3;
+  --sidebar-foreground: #33241A;
+  --sidebar-primary: #4A3223;
+  --sidebar-primary-foreground: #F5EDDB;
+  --sidebar-accent: #D3C4A4;
+  --sidebar-accent-foreground: #33241A;
+  --sidebar-border: #C4B592;
+  --sidebar-ring: #2F5F8A;
+
+  /* Categorías (colores apagados de época). Niveles de luminosidad:
+   * oscuro = vino, verde azulado, ciruela; medio = oliva, óxido, pizarra;
+   * claro = azul desteñido, mostaza, rosa viejo. Así los tonos vecinos
+   * (vino/óxido/rosa; oliva/mostaza; azul/verde azulado) difieren también
+   * en luminosidad. Todos ≥ 3:1 contra el papel y la hoja (mostaza, azul, rosa y
+   * gris se oscurecieron un poco para el papel envejecido). */
+  --cat-mercado: #5A6B1C;           /* oliva */
+  --cat-restaurantes: #9E5234;      /* óxido */
+  --cat-transporte: #4F7896;        /* azul desteñido */
+  --cat-vivienda: #15605A;          /* verde azulado */
+  --cat-salud: #6E2833;             /* vino */
+  --cat-entretenimiento: #664468;   /* ciruela */
+  --cat-compras: #8F6E12;           /* mostaza */
+  --cat-antojos: #A5647E;           /* rosa viejo */
+  --cat-otros: #666E7A;             /* pizarra */
+  --cat-sueldo: #2E5B3A;            /* verde botella */
+  --cat-prestamos: #4A5690;         /* índigo desteñido */
+  --cat-otros-ingresos: #8C6A3A;    /* bronce */
+  --cat-sin-categorizar: #7E7B74;   /* gris: se dibuja hueco, con borde punteado */
+  /* El ícono dentro del chip va del color de la hoja. */
+  --cat-icono: #F5EDDB;
+
+  /* shadcn espera --chart-1…5: se apuntan a las categorías más frecuentes. */
+  --chart-1: var(--cat-mercado);
+  --chart-2: var(--cat-restaurantes);
+  --chart-3: var(--cat-transporte);
+  --chart-4: var(--cat-vivienda);
+  --chart-5: var(--cat-salud);
+
+  /* Papel sobre papel: sombra difusa, sin borde de tinta ni sombra sólida. */
+  --sombra-hoja: 0 1px 1px rgb(74 50 35 / 0.10), 0 2px 4px rgb(74 50 35 / 0.08), 0 18px 30px -22px rgb(74 50 35 / 0.55);
+  /* PENDIENTE DE APROBACIÓN (D28), NO SE USA: la misma sombra con dos
+     * páginas que asoman debajo (tono sobre tono), como en el prototipo D.
+     * Para aplicarla basta con apuntar --shadow-hoja a esta en src/estilos.css. */
+  --sombra-hoja-paginas: 0 1px 1px rgb(74 50 35 / 0.10), 0 3px 0 -1px #EDE3CD, 0 3px 1px -1px rgb(74 50 35 / 0.16), 0 6px 0 -3px #E9DEC5, 0 6px 1px -3px rgb(74 50 35 / 0.14), 0 18px 30px -22px rgb(74 50 35 / 0.55);
+  /* Botón: canto de luz arriba y sombra difusa corta. */
+  --sombra-boton: 0 1px 0 rgb(255 250 240 / 0.25) inset, 0 1px 2px rgb(74 50 35 / 0.25), 0 4px 10px -6px rgb(74 50 35 / 0.5);
+  /* Campo: se ve hundido en el papel (el borde --input se mantiene, ≥ 3:1). */
+  --sombra-campo: inset 0 1px 2px rgb(51 36 26 / 0.12);
+  /* Barra inferior del celular: sombra difusa hacia arriba (sin borde de tinta). */
+  --sombra-barra: 0 -10px 24px -18px rgb(74 50 35 / 0.45);
+  /* Canto de la hoja: apenas se nota; no es un borde de caja. */
+  --borde-hoja: rgb(74 50 35 / 0.10);
+  /* Doble raya roja del margen de las hojas (decorativa). */
+  --margen-libro: #C98E7E;
+  /* Renglones entre filas, como los de un libro mayor (decorativos). */
+  --renglon: #C7D0CB;
+  /* Grano de papel (SVG local de < 1 KB, ruido del navegador). */
+  --textura: url("texturas/grano-tinta.svg");
+}
+
+/* ----------------------------------------------------------- Modo oscuro */
+/* Verde petróleo y texto color papel, botón principal mostaza (no un bloque
+ * blanco). No es una inversión automática: cada color se eligió y midió
+ * contra el petróleo. Las categorías se aclaran pero conservan su orden de
+ * luminosidad (el vino sigue siendo el más oscuro).
+ * El bloque aparece dos veces (sistema y forzado) porque CSS no permite
+ * compartir declaraciones entre una media query y un selector; el ítem 12
+ * puede generarlo desde un solo objeto si lo prefiere. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    color-scheme: dark;
+    --background: #182422;
+    --foreground: #F0E8D8;
+    --card: #22312E;
+    --card-foreground: #F0E8D8;
+    --popover: #22312E;
+    --popover-foreground: #F0E8D8;
+    --primary: #D2A24C;
+    --primary-foreground: #182422;
+    --secondary: #2C3D39;
+    --secondary-foreground: #F0E8D8;
+    --muted: #2C3D39;
+    --muted-foreground: #BCC3B5;
+    --accent: #2B3B38;
+    --accent-foreground: #F0E8D8;
+    --destructive: #F0A08C;
+    --destructive-foreground: #182422;
+    --border: #9FAA9C;
+    --input: #8E9A8C;
+    --ring: #9CC3E6;
+    --regla: #34463F;
+    --sombra: #000000;
+    --velo: rgb(0 0 0 / 0.6);
+    --exito: #A3CB92;
+    --advertencia: #E6BE5A;
+    --aviso-exito-fondo: #253624;
+    --aviso-advertencia-fondo: #3A3319;
+    --aviso-error-fondo: #43291F;
+    --aviso-info-fondo: #1D3136;
+    --monto-positivo: #A3CB92;
+    --monto-negativo: #F0A08C;
+    --sidebar: #131D1B;
+    --sidebar-foreground: #F0E8D8;
+    --sidebar-primary: #D2A24C;
+    --sidebar-primary-foreground: #182422;
+    --sidebar-accent: #22312E;
+    --sidebar-accent-foreground: #F0E8D8;
+    --sidebar-border: #22312E;
+    --sidebar-ring: #9CC3E6;
+    --cat-mercado: #A7B874;
+    --cat-restaurantes: #D98C72;
+    --cat-transporte: #A3C4E0;
+    --cat-vivienda: #6FB3AA;
+    --cat-salud: #D0848B;
+    --cat-entretenimiento: #A87BAE;
+    --cat-compras: #E5C57E;
+    --cat-antojos: #E6B3C3;
+    --cat-otros: #98A6B6;
+    --cat-sueldo: #6AA37C;
+    --cat-prestamos: #A3AEE0;
+    --cat-otros-ingresos: #E0BC7E;
+    --cat-sin-categorizar: #CFCCC6;
+    --cat-icono: #182422;
+
+    /* Papel sobre papel: sombra difusa, sin borde de tinta ni sombra sólida. */
+    --sombra-hoja: 0 1px 0 rgb(240 232 216 / 0.05) inset, 0 2px 4px rgb(0 0 0 / 0.35), 0 20px 34px -20px rgb(0 0 0 / 0.8);
+    /* PENDIENTE DE APROBACIÓN (D28), NO SE USA: la misma sombra con dos
+       * páginas que asoman debajo (tono sobre tono), como en el prototipo D.
+       * Para aplicarla basta con apuntar --shadow-hoja a esta en src/estilos.css. */
+    --sombra-hoja-paginas: 0 1px 0 rgb(240 232 216 / 0.05) inset, 0 3px 0 -1px #1F2D2A, 0 3px 1px -1px rgb(0 0 0 / 0.5), 0 6px 0 -3px #1C2A27, 0 6px 1px -3px rgb(0 0 0 / 0.45), 0 20px 34px -20px rgb(0 0 0 / 0.8);
+    /* Botón: canto de luz arriba y sombra difusa corta. */
+    --sombra-boton: 0 1px 0 rgb(255 240 200 / 0.35) inset, 0 -1px 0 rgb(80 55 10 / 0.3) inset, 0 4px 10px -6px rgb(0 0 0 / 0.8);
+    /* Campo: se ve hundido en el papel (el borde --input se mantiene, ≥ 3:1). */
+    --sombra-campo: inset 0 1px 2px rgb(0 0 0 / 0.35);
+    /* Barra inferior del celular: sombra difusa hacia arriba (sin borde de tinta). */
+    --sombra-barra: 0 -10px 24px -18px rgb(0 0 0 / 0.7);
+    /* Canto de la hoja: apenas se nota; no es un borde de caja. */
+    --borde-hoja: rgb(240 232 216 / 0.07);
+    /* Doble raya roja del margen de las hojas (decorativa). */
+    --margen-libro: #8A4C3E;
+    /* Renglones entre filas, como los de un libro mayor (decorativos). */
+    --renglon: #33483F;
+    /* Grano de papel (SVG local de < 1 KB, ruido del navegador). */
+    --textura: url("texturas/grano-papel.svg");
+  }
+}
+
+:root[data-tema="oscuro"],
+.dark {
+  color-scheme: dark;
+  --background: #182422;
+  --foreground: #F0E8D8;
+  --card: #22312E;
+  --card-foreground: #F0E8D8;
+  --popover: #22312E;
+  --popover-foreground: #F0E8D8;
+  --primary: #D2A24C;
+  --primary-foreground: #182422;
+  --secondary: #2C3D39;
+  --secondary-foreground: #F0E8D8;
+  --muted: #2C3D39;
+  --muted-foreground: #BCC3B5;
+  --accent: #2B3B38;
+  --accent-foreground: #F0E8D8;
+  --destructive: #F0A08C;
+  --destructive-foreground: #182422;
+  --border: #9FAA9C;
+  --input: #8E9A8C;
+  --ring: #9CC3E6;
+  --regla: #34463F;
+  --sombra: #000000;
+  --velo: rgb(0 0 0 / 0.6);
+  --exito: #A3CB92;
+  --advertencia: #E6BE5A;
+  --aviso-exito-fondo: #253624;
+  --aviso-advertencia-fondo: #3A3319;
+  --aviso-error-fondo: #43291F;
+  --aviso-info-fondo: #1D3136;
+  --monto-positivo: #A3CB92;
+  --monto-negativo: #F0A08C;
+  --sidebar: #131D1B;
+  --sidebar-foreground: #F0E8D8;
+  --sidebar-primary: #D2A24C;
+  --sidebar-primary-foreground: #182422;
+  --sidebar-accent: #22312E;
+  --sidebar-accent-foreground: #F0E8D8;
+  --sidebar-border: #22312E;
+  --sidebar-ring: #9CC3E6;
+  --cat-mercado: #A7B874;
+  --cat-restaurantes: #D98C72;
+  --cat-transporte: #A3C4E0;
+  --cat-vivienda: #6FB3AA;
+  --cat-salud: #D0848B;
+  --cat-entretenimiento: #A87BAE;
+  --cat-compras: #E5C57E;
+  --cat-antojos: #E6B3C3;
+  --cat-otros: #98A6B6;
+  --cat-sueldo: #6AA37C;
+  --cat-prestamos: #A3AEE0;
+  --cat-otros-ingresos: #E0BC7E;
+  --cat-sin-categorizar: #CFCCC6;
+  --cat-icono: #182422;
+
+  /* Papel sobre papel: sombra difusa, sin borde de tinta ni sombra sólida. */
+  --sombra-hoja: 0 1px 0 rgb(240 232 216 / 0.05) inset, 0 2px 4px rgb(0 0 0 / 0.35), 0 20px 34px -20px rgb(0 0 0 / 0.8);
+  /* PENDIENTE DE APROBACIÓN (D28), NO SE USA: la misma sombra con dos
+     * páginas que asoman debajo (tono sobre tono), como en el prototipo D.
+     * Para aplicarla basta con apuntar --shadow-hoja a esta en src/estilos.css. */
+  --sombra-hoja-paginas: 0 1px 0 rgb(240 232 216 / 0.05) inset, 0 3px 0 -1px #1F2D2A, 0 3px 1px -1px rgb(0 0 0 / 0.5), 0 6px 0 -3px #1C2A27, 0 6px 1px -3px rgb(0 0 0 / 0.45), 0 20px 34px -20px rgb(0 0 0 / 0.8);
+  /* Botón: canto de luz arriba y sombra difusa corta. */
+  --sombra-boton: 0 1px 0 rgb(255 240 200 / 0.35) inset, 0 -1px 0 rgb(80 55 10 / 0.3) inset, 0 4px 10px -6px rgb(0 0 0 / 0.8);
+  /* Campo: se ve hundido en el papel (el borde --input se mantiene, ≥ 3:1). */
+  --sombra-campo: inset 0 1px 2px rgb(0 0 0 / 0.35);
+  /* Barra inferior del celular: sombra difusa hacia arriba (sin borde de tinta). */
+  --sombra-barra: 0 -10px 24px -18px rgb(0 0 0 / 0.7);
+  /* Canto de la hoja: apenas se nota; no es un borde de caja. */
+  --borde-hoja: rgb(240 232 216 / 0.07);
+  /* Doble raya roja del margen de las hojas (decorativa). */
+  --margen-libro: #8A4C3E;
+  /* Renglones entre filas, como los de un libro mayor (decorativos). */
+  --renglon: #33483F;
+  /* Grano de papel (SVG local de < 1 KB, ruido del navegador). */
+  --textura: url("texturas/grano-papel.svg");
+}

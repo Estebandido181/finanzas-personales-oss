@@ -1,0 +1,48 @@
+# Respaldo diario de la base (ítem 07). Lo lanza finanzas-respaldo.timer.
+#
+# Ejecutarlo a mano:  sudo systemctl start finanzas-respaldo.service
+# Registros:          journalctl -u finanzas-respaldo
+#
+# Usa el python3 del sistema: deploy/respaldo.py solo necesita la librería
+# estándar y así funciona aunque el entorno virtual de la app esté roto.
+# No carga /etc/finanzas/finanzas.env: no necesita ningún secreto.
+
+[Unit]
+Description=Finanzas personales: respaldo diario de la base de datos
+
+[Service]
+Type=oneshot
+User=finanzas
+Group=finanzas
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 /opt/finanzas/deploy/respaldo.py --origen /var/lib/finanzas/finanzas.db --destino /var/backups/finanzas --dias 14
+TimeoutStartSec=15min
+
+# --- Endurecimiento --------------------------------------------------------
+# Escribe en /var/backups/finanzas. /var/lib/finanzas también es escribible
+# porque, si la app se cayó a mitad de una transacción, SQLite necesita
+# deshacerla antes de poder leer la base.
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/finanzas /var/backups/finanzas
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077

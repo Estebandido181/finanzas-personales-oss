@@ -1,0 +1,40 @@
+{
+  "id": "msg-r002",
+  "threadId": "hilo-msg-r002",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1786638000000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=fail (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Aviso sin DMARC (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyAoZWplbXBsbyk8L3RpdGxlPjwvaGVhZD4KPGJvZHk-Cjx0YWJsZSB3aWR0aD0iNjAwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiPgogIDx0cj48dGQ-PGgxPiZpZXhjbDtMaXN0byEgVG9kbyBzYWxpJm9hY3V0ZTsgYmllbiBjb24gdHVzIG1vdmltaWVudG9zPC9oMT48L3RkPjwvdHI-CiAgPHRyPjx0ZD4KICAgIDxwIHN0eWxlPSJmb250LXNpemU6MTRweCI-QmFuY29sb21iaWE6IENvbXByYXN0ZSAkNTQuMzIxLDAwIGVuIFRJRU5EQSBGQUxTQSBFSkVNUExPIGNvbiB0dSBULkRlYiAqMTIzNCwKICAgICAgZWwgMTMvMDgvMjAyNiBhIGxhcyZuYnNwOzExOjIwLiBTaSB0aWVuZXMgZHVkYXMsIGVuY3VlbnRyYW5vcyBhcXVpOiA2MDQwMDAwMDAwIG8KICAgICAgMDE4MDAwMDAwMDAwLiBFc3RhbW9zIGNlcmNhLjwvcD4KICA8L3RkPjwvdHI-CiAgPHRyPjx0ZD48cD5Fc3RlIGVzIHVuIGNvcnJlbyBkZSBlamVtcGxvIGludmVudGFkbyBwYXJhIHBydWViYXMuPC9wPjwvdGQ-PC90cj4KPC90YWJsZT4KPC9ib2R5PjwvaHRtbD4K"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Deshacer la importación · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Inicio</a></nav>
+      <h1>Importación del 2 de octubre</h1>
+      <p class="ayuda">Reporte del banco del 2 de septiembre al 1 de octubre de 2026, cuenta *1234.</p>
+    </div></header>
+
+    <section class="hoja" aria-labelledby="titulo-paso">
+      <div class="hoja__cabeza"><h2 id="titulo-paso">Qué pasó</h2></div>
+      <ul class="libreta"><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-plus"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Agregados</p>
+          <p class="movimiento__meta">Los trae el banco y la app no los tenía. 11 entraron categorizados por tus reglas; 3 quedaron sin categoría.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">14</span></div>
+      </li><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Ya estaban</p>
+          <p class="movimiento__meta">Coincidían con lo que llegó por correo. Se confirmaron y no se repitieron.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">30</span></div>
+      </li><li class="movimiento">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-pencil"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">Corregidos</p>
+          <p class="movimiento__meta">Estaban registrados con otro monto. Quedó el monto del banco.</p>
+        </div>
+        <div class="movimiento__monto"><span class="conteo">2</span></div>
+      </li></ul>
+      <div class="total"><span>Filas del reporte</span><span class="subrayado-doble"><span class="conteo">48</span></span></div>
+      <p class="ayuda grupo">Deshacer quita los 14 agregados y devuelve los 2 corregidos a como estaban.</p>
+      <div><a class="boton " href="importacion-deshacer-dialogo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-undo-2"/></svg>Deshacer importación</a></div>
+    </section>
+    <section class="hoja" aria-labelledby="titulo-resolver">
+      <div class="hoja__cabeza"><h2 id="titulo-resolver">Por resolver</h2></div>
+      <ul class="libreta"><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-copy"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">3 preguntas: ¿es el mismo?</p>
+          <p class="movimiento__meta">El correo y el banco traen un movimiento parecido. La app te sugiere una respuesta y tú decides.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton " href="es-el-mismo.html">Responder preguntas</a></div>
+      </li><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-search-x"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">2 movimientos no están en el banco</p>
+          <p class="movimiento__meta">Llegaron por correo y el reporte no los trae. Nunca se borran solos.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton " href="no-esta-en-el-banco.html">Revisar movimientos</a></div>
+      </li><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">3 movimientos sin categoría</p>
+          <p class="movimiento__meta">Están en 2 grupos. «COBRO VIAJE TRANSPORTE MASIVO» aparece 2 veces.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton boton--principal" href="importacion-categorizar.html">Categorizar lo nuevo</a></div>
+      </li><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-calendar-range"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">2 movimientos son anteriores a tu fecha de inicio</p>
+          <p class="movimiento__meta">Tu historial empieza el 1 de septiembre de 2026. Esas filas no se importaron.</p>
+        </div>
+        <div class="movimiento__acciones"><a class="boton " href="extender-historial.html">Extender historial</a></div>
+      </li></ul>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Confirmación de «Deshacer importación»: no se puede revertir sin volver a subir el archivo. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Botón «Deshacer importación»</td><td>Solo si <code>deshacible</code> es true. Al confirmar: <code>POST /api/importaciones/{id}/deshacer</code> → conteos de lo que se quitó y se restauró.</td></tr><tr><td>Texto del diálogo</td><td>Los conteos salen de <code>agregados</code> y <code>corregidos</code> de la misma importación.</td></tr><tr><td>Por qué confirma y no «Deshacer» a secas</td><td>Deshacer la importación no se puede deshacer sin volver a subir el archivo (nunca se guarda). Es de las confirmaciones que TEXTOS.md reserva a lo irreversible.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+<div class="fondo-dialogo">
+  <div class="dialogo" role="dialog" aria-modal="true" aria-labelledby="titulo-dialogo" aria-describedby="texto-dialogo">
+    <h2 id="titulo-dialogo">¿Deshacer esta importación?</h2>
+    <p id="texto-dialogo">Se quitarán los 14 movimientos agregados y los 2 corregidos volverán a como estaban. Para recuperarlos tendrás que subir el archivo otra vez.</p>
+    <div class="dialogo__acciones"><button type="button" class="boton boton--peligro"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-undo-2"/></svg>Deshacer importación</button><button type="button" class="boton ">Cancelar</button></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Empieza con tu historial del banco · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+
+      <h1>Empieza con tu historial del banco</h1>
+      <p class="ayuda">Sube el Excel de un mes del banco, agrega los que quieras y escribe tu saldo actual. La app calcula con qué saldo empezaste, trae de Gmail los avisos del mismo periodo y los junta con lo del banco.</p>
+    </div></header>
+
+    <section class="hoja" aria-labelledby="a-arch">
+      <div class="hoja__cabeza"><h2 id="a-arch">1. Excel del banco</h2></div>
+      <p class="ayuda">Un archivo a la vez. El banco entrega como máximo 120 movimientos por archivo, así que sube un mes y después agrega otro: la app los junta sin repetir movimientos.</p>
+      <div class="grupo"><ul class="libreta"><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-file-spreadsheet"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">reporte-julio-EJEMPLO.xlsx</p>
+          <p class="movimiento__meta">Leído · 120 movimientos, del 4 al 31 de julio</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-x"/></svg>Quitar<span class="sr-only"> reporte-julio-EJEMPLO.xlsx</span></button></div>
+      </li><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-file-spreadsheet"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">reporte-agosto-EJEMPLO.xlsx</p>
+          <p class="movimiento__meta">Leído · 118 movimientos, del 1 al 31 de agosto</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-x"/></svg>Quitar<span class="sr-only"> reporte-agosto-EJEMPLO.xlsx</span></button></div>
+      </li></ul></div>
+      <div class="grupo"><button type="button" class="boton "><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-plus"/></svg>Agregar otro archivo</button><p class="ayuda" style="margin-top:var(--espacio-2)">Por ejemplo, otro mes.</p></div>
+    </section>
+    <section class="hoja" aria-labelledby="a-saldo">
+      <div class="hoja__cabeza"><h2 id="a-saldo">2. Saldo actual</h2></div>
+      <form class="formulario" action="#"><div class="campo">
+        <label class="etiqueta" for="saldo-actual">Saldo actual en Bancolombia</label>
+        <input class="entrada entrada--monto" id="saldo-actual" inputmode="decimal" autocomplete="off" placeholder="4.739.150" value="" aria-describedby="ayuda-saldo">
+        <p class="ayuda" id="ayuda-saldo">El que ves hoy en la Sucursal Virtual. Punto para los miles y coma para los centavos.</p>
+      </div><button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg>Calcular saldo inicial</button></form>
+      <p class="grupo"><a class="enlace" href="configurar-saldo.html">Prefiero empezar sin historial del banco</a></p>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Arranque guiado: archivos leídos de uno en uno, «Agregar otro archivo» y el saldo actual. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Cuándo aparece</td><td><code>GET /api/arranque</code> → <code>{fase}</code>; <code>fase = "pedir_archivos"</code> mientras no haya fecha de inicio ni movimientos. Reemplaza al inicio vacío «Empieza por tu saldo»; el enlace «Prefiero empezar sin historial del banco» conserva «Configurar saldo».</td></tr><tr><td>Cada archivo, apenas se elige</td><td><code>POST /api/arranque/archivos</code> (multipart, un .xlsx; sin guardar nada) → <code>archivos[] {id, nombre, movimientos, desde, hasta, estado}</code>. La respuesta trae <b>todos</b> los archivos agregados hasta ahora, ya juntos sin duplicar.</td></tr><tr><td>Quitar un archivo</td><td><code>DELETE /api/arranque/archivos/{id}</code> → la lista actualizada.</td></tr><tr><td>«Agregar otro archivo»</td><td>Siempre visible mientras no se haya confirmado; no depende de ningún dato.</td></tr><tr><td>Calcular</td><td><code>POST /api/arranque/calcular</code> con <code>saldo_actual</code> (sin guardar nada) → resultado de la pantalla de saldo inicial, con <code>huecos[]</code> si faltan meses entre archivos.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

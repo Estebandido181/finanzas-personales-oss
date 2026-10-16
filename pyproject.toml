@@ -1,0 +1,28 @@
+[project]
+name = "finanzas-personales"
+version = "0.1.0"
+description = "App web que registra y reporta los gastos a partir de los avisos de Bancolombia."
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+dynamic = ["dependencies"]
+
+[project.urls]
+Repository = "https://github.com/Estebandido181/finanzas-personales-oss"
+Issues = "https://github.com/Estebandido181/finanzas-personales-oss/issues"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+include = ["finanzas*"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = [".", "backend"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["backend/requirements.txt"]}

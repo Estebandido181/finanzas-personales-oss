@@ -1,0 +1,536 @@
+/*
+ * Componentes base del prototipo. Es la referencia visual para adaptar
+ * shadcn/ui en el ítem 12 (ver SISTEMA.md, "Componentes"): aquí solo se usan
+ * los tokens de ../tokens.css, sin colores ni medidas sueltas.
+ */
+@import url("../tokens.css");
+
+/* HISTÓRICO: este prototipo es el aprobado en el ítem 11, con su sombra
+ * sólida desplazada. Esas medidas salieron de tokens.css con el estilo «Libro
+ * mayor» (ver SISTEMA.md); se declaran aquí para que el prototipo siga
+ * dibujándose como se aprobó. No las use el frontend. */
+:root {
+  --sombra-desplazamiento: 3px;
+  --sombra-desplazamiento-boton: 2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-base);
+  line-height: var(--interlineado-texto);
+  font-optical-sizing: auto;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  line-height: var(--interlineado-titulos);
+  letter-spacing: var(--tracking-titulos);
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--texto-2xl); }
+h2 { font-size: var(--texto-xl); }
+h3 { font-size: var(--texto-lg); }
+@media (min-width: 900px) {
+  h1 { font-size: var(--texto-3xl); }
+}
+p { margin: 0; }
+
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+/* Enlace suelto (fuera de un párrafo): alto táctil de 44 px aunque el texto sea pequeño. */
+.enlace { display: inline-flex; align-items: center; min-height: var(--tactil-min); font-size: var(--texto-sm); font-weight: var(--peso-medio); }
+
+:focus-visible {
+  outline: var(--borde-foco) solid var(--ring);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ------------------------------------------------------------- Íconos */
+.icono {
+  width: 20px; height: 20px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.75;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.icono--sm { width: 16px; height: 16px; }
+
+/* ------------------------------------------------------------- Montos */
+/* Letra de máquina de escribir SOLO aquí. Nunca se parte en dos líneas. */
+.monto {
+  font-family: var(--fuente-montos);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--interlineado-montos);
+  white-space: nowrap;
+}
+.monto--grande { font-size: var(--texto-monto-grande); font-weight: var(--peso-fuerte); letter-spacing: -0.02em; }
+.monto--medio { font-size: var(--texto-xl); font-weight: var(--peso-fuerte); }
+.monto--positivo { color: var(--monto-positivo); }
+.monto--negativo { color: var(--monto-negativo); }
+
+/* ---------------------------------------------------------- Estructura */
+.app { min-height: 100vh; }
+.contenido {
+  padding: var(--espacio-8) var(--espacio-pagina) calc(var(--alto-barra-inferior) + var(--espacio-10));
+  max-width: var(--ancho-contenido);
+}
+@media (min-width: 900px) {
+  .app { display: grid; grid-template-columns: var(--ancho-barra-lateral) minmax(0, 1fr); }
+  .contenido { padding: var(--espacio-12) var(--espacio-pagina) var(--espacio-16); }
+}
+
+/* Entre bloques de una pantalla: siempre más aire que dentro de un bloque. */
+.pila > * + * { margin-top: var(--espacio-bloques); }
+.pila-sm > * + * { margin-top: var(--espacio-4); }
+
+.encabezado {
+  display: flex; flex-wrap: wrap; align-items: flex-end;
+  justify-content: space-between; gap: var(--espacio-4);
+}
+.encabezado__titulo > * + * { margin-top: var(--espacio-texto); }
+
+.detalle { color: var(--muted-foreground); font-size: var(--texto-sm); }
+.ayuda { color: var(--muted-foreground); font-size: var(--texto-sm); max-width: 60ch; }
+
+.rejilla { display: grid; gap: var(--espacio-bloques); }
+@media (min-width: 900px) {
+  .rejilla--7-5 { grid-template-columns: 7fr 5fr; align-items: start; }
+  .rejilla--mitades { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+/* ------------------------------------------------ Barra lateral (≥ 900 px) */
+.lateral { display: none; }
+@media (min-width: 900px) {
+  .lateral {
+    display: block;
+    background: var(--sidebar); color: var(--sidebar-foreground);
+    border-right: var(--borde-fino) solid var(--sidebar-border);
+  }
+}
+/* El fondo de la barra llega al final de la página; su contenido queda fijo
+ * al hacer scroll. */
+.lateral__interior {
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: var(--espacio-6);
+  padding: var(--espacio-8) var(--espacio-4) var(--espacio-6);
+}
+/* En la barra lateral los tres modos caben en una fila: ícono sobre texto. */
+.lateral .segmentos { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--espacio-1); }
+.lateral .segmento { flex-direction: column; justify-content: center; gap: 2px; padding: var(--espacio-1); min-height: 56px; font-size: var(--texto-sm); }
+.marca {
+  display: flex; align-items: center; gap: var(--espacio-3);
+  font-family: var(--fuente-titulos); font-size: var(--texto-xl); font-weight: 600;
+  padding: 0 var(--espacio-3); text-decoration: none; min-height: var(--tactil-min);
+}
+.marca img { width: 32px; height: 32px; }
+.nav { display: flex; flex-direction: column; gap: var(--espacio-1); }
+.nav__item {
+  display: flex; align-items: center; gap: var(--espacio-3);
+  min-height: var(--tactil-min); padding: 0 var(--espacio-3);
+  border: var(--borde-fino) solid transparent; border-radius: var(--radius);
+  text-decoration: none; font-weight: var(--peso-medio);
+}
+.nav__item:hover { background: var(--sidebar-accent); }
+/* La sección actual se marca como una pestaña de libreta: hoja con borde
+ * y sombra, no solo con color (así se distingue también sin color). */
+.nav__item[aria-current="page"] {
+  background: var(--card); border-color: var(--sidebar-border);
+  box-shadow: var(--sombra-desplazamiento-boton) var(--sombra-desplazamiento-boton) 0 var(--sombra);
+  font-weight: var(--peso-fuerte);
+}
+.nav__contador {
+  margin-left: auto; font-size: var(--texto-sm); font-weight: var(--peso-fuerte);
+  min-width: 24px; padding: 0 6px; text-align: center;
+  border: var(--borde-fino) solid currentColor; border-radius: var(--radio-chip);
+}
+.lateral__pie { margin-top: auto; display: flex; flex-direction: column; gap: var(--espacio-3); }
+
+/* ------------------------------------------- Barra inferior (< 900 px) */
+.barra-inferior {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  height: var(--alto-barra-inferior);
+  background: var(--card); border-top: var(--borde-fino) solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@media (min-width: 900px) { .barra-inferior { display: none; } }
+.barra-inferior__item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; min-height: var(--tactil-min);
+  font-size: var(--texto-sm); line-height: 1.1; text-decoration: none;
+  color: var(--muted-foreground); position: relative;
+}
+.barra-inferior__item .icono { width: 22px; height: 22px; }
+.barra-inferior__item[aria-current="page"] { color: var(--foreground); font-weight: var(--peso-fuerte); }
+/* Marca de la sección actual: raya gruesa de tinta arriba (no depende del color). */
+.barra-inferior__item[aria-current="page"]::before {
+  content: ""; position: absolute; top: -1px; left: 18%; right: 18%;
+  height: 3px; background: var(--foreground);
+}
+
+/* --------------------------------------------------------------- Hoja */
+.hoja {
+  background: var(--card); color: var(--card-foreground);
+  border: var(--borde-fino) solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--sombra-desplazamiento) var(--sombra-desplazamiento) 0 var(--sombra);
+  padding: var(--espacio-hoja);
+}
+.hoja__cabeza {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--espacio-2) var(--espacio-3);
+  margin-bottom: var(--espacio-cabeza-hoja);
+}
+/* Ayuda justo debajo del título de una hoja. */
+.hoja__ayuda { margin-top: var(--espacio-texto); margin-bottom: var(--espacio-cabeza-hoja); }
+/* Grupos dentro de una hoja (un aviso y un formulario, una lista y su nota). */
+.grupo { margin-top: var(--espacio-grupo); }
+
+/* ------------------------------------------------------------- Botones */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--espacio-2);
+  min-height: var(--tactil-min); padding: 0 var(--espacio-4);
+  font: inherit; font-weight: var(--peso-fuerte); line-height: 1.2; text-decoration: none;
+  border: var(--borde-fino) solid var(--border); border-radius: var(--radius);
+  background: var(--card); color: var(--foreground);
+  box-shadow: var(--sombra-desplazamiento-boton) var(--sombra-desplazamiento-boton) 0 var(--sombra);
+  cursor: pointer;
+  transition: transform var(--duracion-corta) var(--curva), box-shadow var(--duracion-corta) var(--curva);
+}
+/* Al presionar, el botón "baja" sobre su sombra, como un sello. */
+.boton:active { transform: translate(var(--sombra-desplazamiento-boton), var(--sombra-desplazamiento-boton)); box-shadow: none; }
+.boton:hover { background: var(--accent); }
+.boton--principal { background: var(--primary); color: var(--primary-foreground); }
+.boton--principal:hover { background: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.boton--peligro { background: var(--destructive); color: var(--destructive-foreground); border-color: var(--destructive); }
+.boton--peligro:hover { background: var(--destructive); text-decoration: underline; text-underline-offset: 3px; }
+/* Sin borde ni sombra: acciones de bajo peso dentro de una fila. */
+.boton--quieto { background: transparent; border-color: transparent; box-shadow: none; font-weight: var(--peso-medio); padding: 0 var(--espacio-3); }
+.boton--quieto:hover { background: var(--accent); }
+.boton--icono { width: var(--tactil-min); padding: 0; }
+.boton--ancho { width: 100%; }
+@media (prefers-reduced-motion: reduce) { .boton { transition: none; } }
+
+/* -------------------------------------------------------------- Campos */
+.campo > * + * { margin-top: var(--espacio-1); }
+.campo > .etiqueta + * { margin-top: var(--espacio-texto); }
+.campo + .campo { margin-top: var(--espacio-5); }
+.etiqueta { display: block; font-weight: var(--peso-fuerte); font-size: var(--texto-base); }
+.entrada, .selector {
+  display: block; width: 100%; min-height: var(--tactil-min);
+  padding: var(--espacio-2) var(--espacio-3);
+  font: inherit; color: var(--foreground);
+  background: var(--card);
+  border: var(--borde-fino) solid var(--input); border-radius: var(--radius);
+}
+.entrada--monto { font-family: var(--fuente-montos); font-size: var(--texto-lg); }
+/* El ejemplo dentro del campo usa el texto secundario (contraste medido), no el gris por defecto. */
+.entrada::placeholder { color: var(--muted-foreground); opacity: 1; }
+.entrada:focus-visible, .selector:focus-visible { outline-offset: 0; border-color: var(--ring); }
+.selector { appearance: none; padding-right: var(--espacio-10);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%;
+  background-size: 6px 6px; background-repeat: no-repeat; }
+.entrada[aria-invalid="true"] { border-color: var(--destructive); border-width: 2px; }
+.error-campo { color: var(--destructive); font-size: var(--texto-sm); font-weight: var(--peso-fuerte); display: flex; gap: var(--espacio-1); align-items: flex-start; }
+.formulario .boton { margin-top: var(--espacio-6); }
+
+.casilla { display: flex; align-items: center; gap: var(--espacio-3); min-height: var(--tactil-min); }
+.casilla input { width: 20px; height: 20px; accent-color: var(--primary); margin: 0; }
+
+/* Grupo de botones que se excluyen (filtros, apariencia). */
+.segmentos { display: flex; flex-wrap: wrap; gap: var(--espacio-2); }
+.segmento {
+  min-height: var(--tactil-min); padding: 0 var(--espacio-4);
+  font: inherit; font-weight: var(--peso-medio); color: var(--foreground);
+  background: var(--card); border: var(--borde-fino) solid var(--input); border-radius: var(--radius);
+  cursor: pointer; display: inline-flex; align-items: center; gap: var(--espacio-2);
+}
+.segmentos--tercios { display: grid; grid-template-columns: repeat(3, 1fr); }
+.segmentos--tercios .segmento { justify-content: center; padding: 0 var(--espacio-2); }
+.segmento[aria-pressed="true"] {
+  background: var(--primary); color: var(--primary-foreground); border-color: var(--border);
+  font-weight: var(--peso-fuerte);
+}
+
+/* -------------------------------------------------- Chip de categoría */
+.chip { display: inline-flex; align-items: center; gap: var(--espacio-2); min-width: 0; }
+.chip__marca {
+  display: inline-grid; place-items: center; flex: none;
+  width: 32px; height: 32px; border-radius: var(--radio-chip);
+  background: var(--c, var(--cat-otros)); color: var(--cat-icono);
+}
+.chip__marca .icono { width: 18px; height: 18px; }
+.chip__nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* "Sin categorizar" es un hueco punteado: se distingue por la forma, no por el gris. */
+.chip__marca--vacia {
+  background: transparent; color: var(--muted-foreground);
+  border: 1.5px dashed var(--cat-sin-categorizar);
+}
+.chip--sm .chip__marca { width: 24px; height: 24px; }
+.chip--sm .chip__marca .icono { width: 14px; height: 14px; }
+
+/* Botón de categoría para "categorizar en un toque". */
+.opciones-categoria { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--espacio-2); }
+.opcion-categoria {
+  display: flex; align-items: center; gap: var(--espacio-2);
+  min-height: var(--tactil-min); padding: var(--espacio-1) var(--espacio-2) var(--espacio-1) var(--espacio-1);
+  font: inherit; font-size: var(--texto-sm); font-weight: var(--peso-medio); line-height: 1.2;
+  color: var(--foreground); text-align: left;
+  background: var(--card); border: var(--borde-fino) solid var(--input); border-radius: var(--radius);
+  cursor: pointer;
+}
+.opcion-categoria:hover { border-color: var(--border); background: var(--accent); }
+
+/* Colores por categoría: una clase por categoría fija la variable --c. */
+.c-mercado { --c: var(--cat-mercado); }
+.c-restaurantes { --c: var(--cat-restaurantes); }
+.c-transporte { --c: var(--cat-transporte); }
+.c-vivienda { --c: var(--cat-vivienda); }
+.c-salud { --c: var(--cat-salud); }
+.c-entretenimiento { --c: var(--cat-entretenimiento); }
+.c-compras { --c: var(--cat-compras); }
+.c-antojos { --c: var(--cat-antojos); }
+.c-otros { --c: var(--cat-otros); }
+.c-sueldo { --c: var(--cat-sueldo); }
+.c-prestamos { --c: var(--cat-prestamos); }
+.c-otros-ingresos { --c: var(--cat-otros-ingresos); }
+.c-sin { --c: var(--cat-sin-categorizar); }
+
+/* ------------------------------------------------------------- Avisos */
+.aviso {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--espacio-3);
+  padding: var(--espacio-5); border: var(--borde-fino) solid var(--border); border-radius: var(--radius);
+  background: var(--aviso-info-fondo); color: var(--foreground);
+}
+.aviso > .icono { margin-top: 2px; }
+.aviso__cuerpo > * + * { margin-top: var(--espacio-2); }
+.aviso__titulo { font-weight: var(--peso-fuerte); }
+.aviso__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-3); margin-top: var(--espacio-4) !important; }
+.aviso--error { background: var(--aviso-error-fondo); }
+.aviso--error > .icono { color: var(--destructive); }
+.aviso--advertencia { background: var(--aviso-advertencia-fondo); }
+.aviso--exito { background: var(--aviso-exito-fondo); }
+.aviso--exito > .icono { color: var(--exito); }
+/* El aviso importante lleva la sombra sólida para que "salga" de la página. */
+.aviso--destacado { box-shadow: var(--sombra-desplazamiento) var(--sombra-desplazamiento) 0 var(--sombra); }
+
+/* ------------------------------------------------ Filas de la libreta */
+/* Reseteo con :where() (especificidad cero): así .pila y .grupo sí pueden darles margen. */
+:where(.libreta, .dias, .barras) { list-style: none; margin: 0; padding: 0; }
+.libreta > li + li { border-top: var(--borde-fino) solid var(--regla); }
+/* La última fila de una hoja no suma su relleno al de la hoja (quedaría un
+ * hueco). La fila pendiente sí lo conserva: su franja amarilla lo necesita. */
+.hoja .libreta > li:last-child:not(.movimiento--pendiente) { padding-bottom: 0; }
+.movimiento {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: var(--espacio-3);
+  /* Descripción y monto arriba; tipo y hora a todo el ancho; abajo, cómo se
+   * categorizó y el botón "Cambiar" en la misma línea. */
+  grid-template-areas: "marca desc monto" "marca meta meta" "marca origen accion" "panel panel panel";
+  align-items: start; padding: var(--espacio-fila) 0;
+}
+.movimiento > .chip__marca { grid-area: marca; margin-top: 2px; }
+.movimiento__texto { display: contents; }
+.movimiento__descripcion { grid-area: desc; }
+.movimiento__texto > .movimiento__meta:nth-child(2) { grid-area: meta; }
+.movimiento__origen { grid-area: origen; align-self: center; margin-top: var(--espacio-1); }
+.movimiento__monto { grid-area: monto; }
+.movimiento__texto { min-width: 0; }
+.movimiento__descripcion { font-weight: var(--peso-medio); overflow-wrap: anywhere; }
+.movimiento__meta { color: var(--muted-foreground); font-size: var(--texto-sm); }
+.movimiento__monto { text-align: right; }
+.movimiento__acciones { grid-area: accion; display: flex; justify-content: flex-end; align-self: center; }
+/* El botón sin borde se corre hacia el margen para que su texto quede alineado con los montos. */
+.movimiento__acciones .boton--quieto { margin-right: calc(-1 * var(--espacio-3)); }
+.movimiento__panel { grid-area: panel; margin-top: var(--espacio-4); }
+/* Fila pendiente: la franja amarilla llega de borde a borde de la hoja. */
+.movimiento--pendiente { background: var(--aviso-advertencia-fondo); margin: 0 calc(-1 * var(--espacio-hoja)); padding-left: var(--espacio-hoja); padding-right: var(--espacio-hoja); }
+
+/* Cómo se categorizó: etiqueta pequeña con ícono. */
+.origen .icono { display: inline-block; vertical-align: -3px; margin-right: 4px; }
+
+/* Encabezado de día: fecha a la izquierda, gasto del día a la derecha. Cada
+ * día es su propia hoja (una página de la libreta), separada de la siguiente:
+ * así los días no se funden en una sola lista larga. */
+.dia {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--espacio-3);
+  padding: 0 0 var(--espacio-3);
+  border-bottom: var(--borde-fino) solid var(--border);
+  font-family: var(--fuente-texto); font-size: var(--texto-base); letter-spacing: normal;
+  font-weight: var(--peso-fuerte);
+}
+.dia > :last-child { white-space: nowrap; text-align: right; }
+.dias > li + li { margin-top: var(--espacio-bloques); }
+
+/* Total de libreta: raya simple arriba y doble abajo, como en contabilidad. */
+.total {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--espacio-3);
+  padding-top: var(--espacio-3); margin-top: var(--espacio-2);
+  border-top: var(--borde-fino) solid var(--border);
+  font-weight: var(--peso-fuerte);
+}
+.subrayado-doble { border-bottom: 3px double var(--border); padding-bottom: 2px; }
+
+/* ---------------------------------------------- Resumen del mes (inicio) */
+.resumen { display: grid; gap: var(--espacio-6); }
+.resumen__principal > * + * { margin-top: var(--espacio-texto); }
+/* En el celular las cifras secundarias son filas de libreta: nombre a la
+ * izquierda y monto a la derecha (dos montos lado a lado no caben en 390 px). */
+.resumen__secundarios { display: grid; gap: var(--espacio-4); border-top: var(--borde-fino) solid var(--regla); padding-top: var(--espacio-6); }
+.cifra { display: flex; justify-content: space-between; align-items: baseline; gap: var(--espacio-3); flex-wrap: wrap; }
+.resumen__secundarios .monto--medio { font-size: var(--texto-lg); }
+.cifra__nombre { color: var(--muted-foreground); font-size: var(--texto-sm); font-weight: var(--peso-medio); }
+@media (min-width: 900px) {
+  .resumen { grid-template-columns: 1.4fr 1fr; align-items: stretch; }
+  .resumen__secundarios { border-top: 0; padding-top: 0; border-left: var(--borde-fino) solid var(--regla); padding-left: var(--espacio-8); align-content: center; gap: var(--espacio-6); }
+  .cifra { display: block; }
+  .cifra > * + * { margin-top: var(--espacio-texto); }
+  .resumen__secundarios .monto--medio { font-size: var(--texto-xl); }
+}
+
+/* ------------------------------------------ Gráfico: barras por categoría */
+/* Cada categoría es una fila con su chip, su barra y su monto: la barra no
+ * necesita leyenda porque está al lado del nombre (ver SISTEMA.md). */
+.barra {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--espacio-4); row-gap: var(--espacio-1);
+  grid-template-areas: "nombre monto" "pista pista";
+  align-items: center; padding: var(--espacio-fila-grafico) 0;
+}
+.barra > .chip { grid-area: nombre; }
+.barra > .monto { grid-area: monto; text-align: right; }
+.barra + .barra { border-top: var(--borde-fino) solid var(--regla); }
+.barra__pista { grid-area: pista; display: flex; align-items: center; gap: var(--espacio-2); }
+.barra__relleno {
+  height: 10px; width: var(--p); min-width: 2px;
+  background: var(--c); border-radius: 0 var(--radio-barra) var(--radio-barra) 0;
+}
+.barra__relleno--vacia { background: transparent; border: 1.5px dashed var(--cat-sin-categorizar); }
+.barra__porcentaje { color: var(--muted-foreground); font-size: var(--texto-sm); min-width: 4ch; white-space: nowrap; }
+@media (min-width: 900px) {
+  .barra { grid-template-columns: 11.5rem minmax(0, 1fr) auto; grid-template-areas: "nombre pista monto"; }
+}
+
+/* ------------------------------------- Gráfico: elegir "Barras" o "Dona" */
+/* El dueño elige cómo ver el gráfico; barras por defecto. La elección se
+ * recuerda en el dispositivo (localStorage, como la apariencia) y se aplica
+ * con data-grafico en <html> antes de pintar. La lista de categorías es la
+ * MISMA en las dos vistas: en barras cada fila lleva su barra; en dona la
+ * lista es la leyenda (sin barra) y el anillo va arriba. Así el lector de
+ * pantalla lee lo mismo en ambas y no hay una leyenda aparte que buscar. */
+.vista-grafico { display: flex; align-items: center; flex-wrap: wrap; gap: var(--espacio-2) var(--espacio-3); margin-bottom: var(--espacio-cabeza-hoja); }
+.vista-grafico__etiqueta { color: var(--muted-foreground); font-size: var(--texto-sm); font-weight: var(--peso-medio); }
+.vista-grafico .segmento { min-width: 6.5rem; justify-content: center; }
+
+.dona { display: none; position: relative; width: min(15rem, 100%); margin: var(--espacio-2) auto var(--espacio-6); }
+.dona svg { display: block; width: 100%; height: auto; overflow: visible; }
+/* Cada tajada lleva un filo del color de la hoja: separa tajadas vecinas
+ * aunque sus colores se parezcan (la paleta es apagada). */
+.dona__tajada { fill: var(--c); stroke: var(--card); stroke-width: 2; stroke-linejoin: round; }
+/* "Sin categorizar" es hueca y punteada, igual que su chip y su barra. */
+.dona__tajada--vacia { fill: none; stroke: var(--cat-sin-categorizar); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.dona__centro {
+  position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: var(--espacio-1);
+}
+.dona__centro .monto { font-size: var(--texto-lg); font-weight: var(--peso-fuerte); }
+
+:root[data-grafico="dona"] .dona { display: block; }
+:root[data-grafico="dona"] .barra__relleno { display: none; }
+/* En dona, cada fila de la lista es leyenda: el porcentaje va debajo del
+ * nombre (alineado con el texto, no con el cuadro) y el monto a la derecha.
+ * En 390 px el nombre más largo ("Vivienda y servicios") cabe entero. */
+:root[data-grafico="dona"] .barra__pista { padding-left: calc(24px + var(--espacio-2)); }
+@media (min-width: 900px) {
+  /* Columnas de ancho fijo: porcentajes y montos quedan en columna de fila a fila. */
+  :root[data-grafico="dona"] .barra { grid-template-columns: minmax(0, 1fr) 4.5rem minmax(8.5rem, auto); grid-template-areas: "nombre pista monto"; column-gap: var(--espacio-4); }
+  :root[data-grafico="dona"] .barra__pista { padding-left: 0; justify-content: flex-end; }
+}
+
+/* ------------------------------------------ Desglose plegable (Saldo) */
+/* <details> nativo: se abre con un toque, Enter o Espacio, y el lector de
+ * pantalla anuncia "contraído/expandido" sin JavaScript. Plegado por
+ * defecto: la cifra manda y el cálculo queda a un toque. */
+.desglose { border-top: var(--borde-fino) solid var(--regla); padding-top: var(--espacio-2); }
+.desglose__boton {
+  display: flex; align-items: center; gap: var(--espacio-2);
+  min-height: var(--tactil-min); width: fit-content;
+  font-weight: var(--peso-fuerte); cursor: pointer; list-style: none;
+}
+.desglose__boton::-webkit-details-marker { display: none; }
+.desglose__boton:hover .desglose__texto { text-decoration: underline; text-underline-offset: 3px; }
+.desglose__boton .icono { transition: transform var(--duracion-corta) var(--curva); }
+.desglose[open] .desglose__boton .icono { transform: rotate(180deg); }
+.desglose__cuerpo { padding: var(--espacio-3) 0 var(--espacio-1); max-width: 30rem; }
+.desglose__cuerpo > .fila-cifra + .fila-cifra { margin-top: var(--espacio-3); }
+.fila-cifra { display: flex; justify-content: space-between; align-items: baseline; gap: var(--espacio-3); }
+@media (prefers-reduced-motion: reduce) { .desglose__boton .icono { transition: none; } }
+
+/* -------------------------------------------------------- Selector de mes */
+.selector-mes { display: flex; align-items: center; gap: var(--espacio-2); flex-wrap: wrap; }
+
+/* ------------------------------------------------------ Estado de sincronización */
+.sincronizacion { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espacio-3); }
+.sincronizacion__estado { display: inline-flex; align-items: center; gap: var(--espacio-2); color: var(--muted-foreground); font-size: var(--texto-sm); }
+.sincronizacion__estado .icono { color: var(--exito); }
+.sincronizacion__estado--error { color: var(--destructive); font-weight: var(--peso-fuerte); }
+.sincronizacion__estado--error .icono { color: inherit; }
+
+/* ------------------------------------------------------------ Estado vacío */
+.vacio { text-align: center; padding: var(--espacio-12) var(--espacio-hoja); }
+.vacio > * + * { margin-top: var(--espacio-4); }
+.vacio__icono { width: 40px; height: 40px; color: var(--muted-foreground); }
+.vacio p { max-width: 44ch; margin-left: auto; margin-right: auto; }
+
+/* ------------------------------------------------------------ Diálogo */
+.fondo-dialogo {
+  position: fixed; inset: 0; z-index: 20;
+  background: var(--velo);
+  display: grid; align-items: end;
+}
+.dialogo {
+  background: var(--popover); color: var(--popover-foreground);
+  border: var(--borde-fino) solid var(--border); border-radius: var(--radius) var(--radius) 0 0;
+  padding: var(--espacio-6) var(--espacio-5) calc(var(--espacio-6) + env(safe-area-inset-bottom));
+}
+.dialogo > * + * { margin-top: var(--espacio-4); }
+.dialogo__acciones { display: flex; flex-direction: column-reverse; gap: var(--espacio-3); }
+@media (min-width: 600px) {
+  .fondo-dialogo { place-items: center; }
+  .dialogo { width: min(30rem, 100% - 2rem); border-radius: var(--radius); box-shadow: 6px 6px 0 var(--sombra); }
+  .dialogo__acciones { flex-direction: row; justify-content: flex-end; }
+}
+
+/* ------------------------------------------------------------ Reglas */
+.regla { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--espacio-3); align-items: center; padding: var(--espacio-fila) 0; }
+.regla__frase { overflow-wrap: anywhere; }
+.regla__frase strong { font-weight: var(--peso-fuerte); }
+
+/* ------------------------------------------------------------ Login */
+.login { min-height: 100vh; display: grid; place-items: center; padding: var(--espacio-6) var(--espacio-4); }
+.login .hoja { width: min(24rem, 100%); }
+.login__marca { display: flex; flex-direction: column; align-items: center; gap: var(--espacio-3); text-align: center; margin-bottom: var(--espacio-8); }
+.login__marca img { width: 56px; height: 56px; }
+
+.opcion-categoria .chip__marca { width: 28px; height: 28px; }
+.opcion-categoria .chip__marca .icono { width: 16px; height: 16px; }
+
+/* Ofertas de regla: en el celular, un botón por línea y texto alineado a la izquierda. */
+.ofertas-regla { flex-direction: column; align-items: stretch; }
+.ofertas-regla .boton { justify-content: flex-start; text-align: left; padding: var(--espacio-2) var(--espacio-3); }
+@media (min-width: 600px) { .ofertas-regla { flex-direction: row; align-items: center; } }
+
+/* Solo para las capturas del prototipo (ver tema.js). No pasa al frontend. */
+.captura body { position: relative; }
+.captura .barra-inferior { position: absolute; }
+/* En una captura de página completa, la barra lateral "sticky" se dibujaría a
+ * mitad de la imagen: se fija arriba con el alto de una pantalla. */
+.captura .lateral__interior { position: static; }

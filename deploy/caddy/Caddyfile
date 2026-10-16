@@ -1,0 +1,39 @@
+# Caddy delante de Finanzas personales (ítem 07). Ver deploy/GUIA.md, paso 9.
+#
+# Se instala en /etc/caddy/Caddyfile. DOMINIO es tu subdominio completo, por
+# ejemplo tu-subdominio.duckdns.org. Se define en el override de systemd de
+# Caddy, /etc/systemd/system/caddy.service.d/override.conf:
+#
+#     [Service]
+#     Environment=DOMINIO=tu-subdominio.duckdns.org
+#
+# (o escribe el dominio directamente en lugar de {$DOMINIO}).
+#
+# Con un nombre de dominio, Caddy obtiene y renueva solo el certificado HTTPS
+# (Let's Encrypt) y redirige http:// a https://. Necesita los puertos 80 y 443
+# abiertos y que el subdominio apunte a la IP pública de la VM.
+#
+# Importante:
+# - Se usa 127.0.0.1 literal, no "localhost": "localhost" podría resolverse a
+#   ::1 (IPv6), donde la app no escucha, y uvicorn solo confía en los
+#   encabezados X-Forwarded-* que llegan desde 127.0.0.1.
+# - NO se reescribe el encabezado Host (no añadas un header_up que lo
+#   cambie dentro de reverse_proxy). La app compara el
+#   Origin de cada formulario con el Host de la petición; si Caddy lo
+#   cambiara, todos los POST (empezando por el login) responderían 403.
+# - X-Forwarded-For: sin "trusted_proxies", Caddy ignora el X-Forwarded-For
+#   que mande el visitante y lo reemplaza por la IP real de la conexión. Por
+#   eso nadie puede falsificar su IP y el límite de intentos de login por IP
+#   funciona. No añadas trusted_proxies.
+# - La compresión (encode) solo se aplica a /app/assets/* (el JS, CSS y
+#   fuentes del frontend, ítem 12: archivos fijos, sin datos ni tokens). Las
+#   páginas y la API llevan tokens (formularios, sesión, CSRF) junto a texto
+#   que el visitante puede influir; comprimirlas abre en teoría la puerta a
+#   ataques tipo BREACH. Son pequeñas, así que sin comprimir no se nota.
+
+{$DOMINIO} {
+	@estaticos path /app/assets/*
+	encode @estaticos zstd gzip
+	header Strict-Transport-Security "max-age=31536000"
+	reverse_proxy 127.0.0.1:8000
+}

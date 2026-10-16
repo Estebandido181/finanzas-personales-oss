@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Categoriza lo nuevo · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+
+      <h1>Categoriza lo nuevo</h1>
+      <p class="ayuda">Estos movimientos entraron del banco y ninguna regla los categoriza. Están agrupados por descripción: elige una categoría y se aplica a todo el grupo.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="c-grupos">
+      <div class="hoja__cabeza"><h2 id="c-grupos">3 grupos sin categoría</h2></div>
+      <ul class="libreta"><li class="movimiento movimiento--pendiente movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">COBRO VIAJE TRANSPORTE MASIVO</p>
+          <p class="movimiento__meta">Apareció 20 veces entre el 5 de julio y el 30 de septiembre. Suman <span class="monto">$62.000</span>. ¿Qué es?</p>
+          <p class="movimiento__meta movimiento__origen">Sin categorizar</p>
+        </div>
+        <div class="movimiento__panel"><p class="etiqueta" id="elegir-g1">¿En qué categoría va? Toca una:</p><div class="opciones-categoria" role="group" aria-labelledby="elegir-g1" style="margin-top: var(--espacio-2)"><button type="button" class="opcion-categoria"><span class="chip__marca c-mercado" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-basket"/></svg></span><span>Mercado</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-restaurantes" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-utensils"/></svg></span><span>Restaurantes</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-transporte" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-bus"/></svg></span><span>Transporte</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-vivienda" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-house"/></svg></span><span>Vivienda y servicios</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-salud" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-heart-pulse"/></svg></span><span>Salud</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-entretenimiento" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ticket"/></svg></span><span>Entretenimiento</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-compras" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shopping-bag"/></svg></span><span>Compras</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-antojos" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ice-cream-cone"/></svg></span><span>Antojos</span></button><button type="button" class="opcion-categoria"><span class="chip__marca c-otros" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-shapes"/></svg></span><span>Otros</span></button></div></div>
+      </li><li class="movimiento movimiento--pendiente movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">PAGO CUOTA GIMNASIO EJEMPLO</p>
+          <p class="movimiento__meta">Apareció 3 veces. Suman <span class="monto">$285.000</span>. ¿Qué es?</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton ">Categorizar<span class="sr-only"> PAGO CUOTA GIMNASIO EJEMPLO</span></button></div>
+      </li><li class="movimiento movimiento--pendiente movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">ABONO NOMINA EMPRESA EJEMPLO</p>
+          <p class="movimiento__meta">Apareció 2 veces. Suman <span class="monto monto--positivo">+$7.150.000</span>. ¿Qué es?</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton ">Categorizar<span class="sr-only"> ABONO NOMINA EMPRESA EJEMPLO</span></button></div>
+      </li></ul>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Categorizar lo nuevo agrupado tras el arranque (ítem 31): 27 movimientos en 3 grupos. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Grupos</td><td><code>GET /api/movimientos/grupos-sin-categoria</code> → <code>[{descripcion, veces, total_centavos, desde, hasta, clase: gasto|ingreso}]</code>. El servidor agrupa por descripción; el frontend no agrupa (es el componente «Categorizar en grupo» del ítem 38).</td></tr><tr><td>Texto «apareció 20 veces»</td><td><code>veces</code>, <code>total_centavos</code> y el rango <code>desde</code>/<code>hasta</code> del grupo.</td></tr><tr><td>Categorías que se ofrecen</td><td><code>GET /api/categorias</code> filtradas por <code>clase</code> del grupo (gasto o ingreso).</td></tr><tr><td>Elegir categoría</td><td><code>POST /api/movimientos/grupos-sin-categoria/categorizar</code> con <code>{descripcion, categoria_id}</code> → <code>{categorizados, reglas_propuestas[]}</code>. Las propuestas («empiezan por», «contienen») vienen escritas del servidor.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

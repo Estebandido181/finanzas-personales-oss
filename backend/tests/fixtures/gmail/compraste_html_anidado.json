@@ -1,0 +1,102 @@
+{
+  "id": "msg-0004",
+  "threadId": "hilo-0004",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1787245845000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/mixed",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de compra con adjunto (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "multipart/mixed; boundary=\"a\""
+      }
+    ],
+    "body": {
+      "size": 0
+    },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "multipart/related",
+        "filename": "",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "multipart/related; boundary=\"b\""
+          }
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "partId": "0.0",
+            "mimeType": "text/html",
+            "filename": "",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=ISO-8859-1"
+              }
+            ],
+            "body": {
+              "size": 0,
+              "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyAoZWplbXBsbyk8L3RpdGxlPgo8c3R5bGU-dGQgeyBmb250LWZhbWlseTogQXJpYWw7IH0gLm9jdWx0byB7IGRpc3BsYXk6bm9uZSB9PC9zdHlsZT48L2hlYWQ-Cjxib2R5Pgo8dGFibGUgd2lkdGg9IjYwMCIgY2VsbHBhZGRpbmc9IjAiIGNlbGxzcGFjaW5nPSIwIj4KICA8dHI-PHRkPjxpbWcgc3JjPSJodHRwczovL2V4YW1wbGUuY29tL2xvZ28ucG5nIiBhbHQ9IiI-PC90ZD48L3RyPgogIDx0cj48dGQ-PGgxPiZpZXhjbDtMaXN0byEgVG9kbyBzYWxpJm9hY3V0ZTsgYmllbiBjb24gdHVzIG1vdmltaWVudG9zPC9oMT48L3RkPjwvdHI-CiAgPHRyPjx0ZD4KICAgIDxwIHN0eWxlPSJmb250LXNpemU6MTRweCI-QmFuY29sb21iaWE6IENvbXByYXN0ZSAkNjguNjMwLDAwIGVuIFJFU1RBVVJBTlRFIEVKRU1QTE8gY29uIHR1IFQuRGViICoxMjM0LCBlbCAyMC8wOC8yMDI2IGEgbGFzIDEyOjEwLiBTaSB0aWVuZXMgZHVkYXMsIGVuY3VlbnRyYW5vcyBhcXVpOiA2MDQwMDAwMDAwIG8gMDE4MDAwMDAwMDAwLiBFc3RhbW9zIGNlcmNhLjwvcD4KICA8L3RkPjwvdHI-CiAgPHRyPjx0ZCBzdHlsZT0iZm9udC1zaXplOjExcHg7Y29sb3I6Izc3NyI-CiAgICA8cD48Yj5Db25zZWpvcyBkZSBzZWd1cmlkYWQ6PC9iPjwvcD4KICAgIDx1bD4KICAgICAgPGxpPk51bmNhIGNvbXBhcnRhcyB0dXMgY2xhdmVzIG5pIGMmb2FjdXRlO2RpZ29zIGRlIHZlcmlmaWNhY2kmb2FjdXRlO24uPC9saT4KICAgICAgPGxpPkJhbmNvbG9tYmlhIG51bmNhIHRlIHBlZGlyJmFhY3V0ZTsgZGF0b3MgcG9yIGNvcnJlby48L2xpPgogICAgPC91bD4KICAgIDxwPkVzdGUgZXMgdW4gY29ycmVvIGRlIGVqZW1wbG8gaW52ZW50YWRvIHBhcmEgcHJ1ZWJhcy48L3A-CiAgPC90ZD48L3RyPgo8L3RhYmxlPgo8L2JvZHk-PC9odG1sPg"
+            }
+          },
+          {
+            "partId": "0.1",
+            "mimeType": "image/png",
+            "filename": "logo.png",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "image/png"
+              }
+            ],
+            "body": {
+              "size": 10,
+              "attachmentId": "adjunto-0001"
+            }
+          }
+        ]
+      },
+      {
+        "partId": "1",
+        "mimeType": "text/plain",
+        "filename": "condiciones.txt",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          }
+        ],
+        "body": {
+          "size": 20,
+          "attachmentId": "adjunto-0002"
+        }
+      }
+    ]
+  }
+}

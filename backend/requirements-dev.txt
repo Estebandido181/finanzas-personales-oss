@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest~=9.1
+httpx~=0.28.1
+# Pruebas de propiedades de la conciliación (ítem 40, D44): solo desarrollo y CI,
+# nunca en la VM (no está en requirements.txt).
+hypothesis~=6.168

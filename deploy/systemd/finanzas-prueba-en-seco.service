@@ -1,0 +1,57 @@
+# Prueba en seco del lector de avisos (ítem 21). NO tiene temporizador: se
+# lanza a mano antes de desplegar un cambio del lector (deploy/GUIA.md, 13.2).
+#
+# Ejecutarla:   sudo systemctl start finanzas-prueba-en-seco.service
+# Resultado:    journalctl -u finanzas-prueba-en-seco -n 60 --no-pager
+#
+# Vuelve a descargar de Gmail (solo lectura) los correos ya registrados en la
+# base y dice cómo los leería el código actual. Solo imprime conteos y fechas,
+# nunca montos, nombres ni asuntos. No escribe nada: la base se abre en solo
+# lectura y la unidad no tiene ninguna ruta con escritura (ni ReadWritePaths).
+# Si el token de Gmail caduca, se renueva en memoria y el registro avisa que
+# no se pudo guardar: es lo esperado aquí.
+#
+# Códigos de salida: 0 terminó (lee el resultado en el registro); 1 algún
+# correo no se pudo descargar; 2 falta configuración, la base o la
+# autorización de Gmail.
+
+[Unit]
+Description=Finanzas personales: prueba en seco del lector de avisos (no escribe nada)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=finanzas
+Group=finanzas
+WorkingDirectory=/opt/finanzas
+EnvironmentFile=/etc/finanzas/finanzas.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/finanzas/.venv/bin/python -m finanzas.prueba_en_seco --incluir-no-reconocidos
+TimeoutStartSec=15min
+
+# --- Endurecimiento (igual que finanzas-sync, pero sin ninguna escritura) ---
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadOnlyPaths=/var/lib/finanzas
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077

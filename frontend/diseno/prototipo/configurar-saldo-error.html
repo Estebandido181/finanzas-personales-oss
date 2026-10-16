@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Configurar saldo · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="componentes.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button>
+        <button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button>
+        <button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+    <header class="encabezado"><div class="encabezado__titulo">
+      <h1>Configurar saldo</h1>
+      <p class="ayuda">Escribe el saldo de tu cuenta y la fecha desde la que la app empieza a llevar las cuentas. Solo se leen los avisos de Bancolombia desde esa fecha.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="titulo-datos">
+      <h2 id="titulo-datos">Tu punto de partida</h2>
+      <form class="formulario grupo" action="saldo.html">
+        <div class="campo">
+          <label class="etiqueta" for="saldo-inicial">Saldo inicial en pesos</label>
+          <input class="entrada entrada--monto" id="saldo-inicial" inputmode="decimal" autocomplete="off" placeholder="1.250.000" value="1.25O.000" aria-invalid="true" aria-describedby="ayuda-monto error-monto">
+          <p class="ayuda" id="ayuda-monto">El que tenías al comenzar el día de la fecha de inicio (a las 00:00). Punto para los miles y coma para los centavos.</p>
+            <p class="error-campo" id="error-monto"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg><span>Ese monto tiene una letra O en lugar de un cero. Escríbelo solo con números, por ejemplo <span class="monto">1.250.000</span>.</span></p>
+        </div>
+        <div class="campo">
+          <label class="etiqueta" for="fecha-inicio">Fecha de inicio</label>
+          <input class="entrada" id="fecha-inicio" type="date" max="2026-10-02" value="2026-10-15" aria-invalid="true" aria-describedby="ayuda-fecha error-fecha">
+          <p class="ayuda" id="ayuda-fecha">Los movimientos de ese día sí cuentan. La fecha de inicio no se puede cambiar cuando ya hay movimientos.</p>
+            <p class="error-campo" id="error-fecha"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg><span>La fecha de inicio no puede ser futura. Elige hoy o un día anterior.</span></p>
+        </div>
+        <button type="submit" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg>Guardar saldo inicial</button>
+      </form>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

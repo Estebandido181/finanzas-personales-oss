@@ -1,0 +1,44 @@
+{
+  "id": "aut-0001",
+  "threadId": "hilo-aut-0001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1787324460000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/plain",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=fail header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=ZzZzZz99;\r\n       spf=fail (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com does not designate 198.51.100.66 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=fail (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "Received",
+        "value": "from mail.evil.example (mail.evil.example [198.51.100.66]) by mx.google.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com; dkim=pass header.d=notificacionesbancolombia.com; spf=pass smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com; dmarc=pass header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de compra (ataque de ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/plain; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "QmFuY29sb21iaWE6IENvbXByYXN0ZSAkOTkuOTk5LDAwIGVuIFRJRU5EQSBGQUxTQSBFSkVNUExPIGNvbiB0dSBULkRlYiAqOTk5OSwgZWwgMjEvMDgvMjAyNiBhIGxhcyAxMDowMS4"
+    }
+  }
+}

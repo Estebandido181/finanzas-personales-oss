@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inicio con el resumen de la importación · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado">
+      <div class="encabezado__titulo">
+        <nav class="selector-mes" aria-label="Cambiar de mes"><a class="boton boton--quieto" href="#" rel="prev"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Septiembre</a></nav>
+        <h1>Octubre de 2026</h1>
+      </div>
+      <div class="sincronizacion">
+        <p class="sincronizacion__estado"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-check"/></svg><span>Sincronizado hoy a las 6:02 a. m.</span></p>
+        <button type="button" class="boton "><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-refresh-cw"/></svg>Sincronizar ahora</button>
+        <a class="boton " href="importar.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-upload"/></svg>Importar movimientos del banco</a>
+      </div>
+    </header>
+    <div class="aviso aviso--exito" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">14 agregados, 30 ya estaban, 2 corregidos.</span> Importación del 2 de octubre.</p><div class="aviso__acciones"><a class="boton " href="importacion-detalle.html">Ver detalle</a><a class="boton boton--quieto" href="importacion-deshacer-dialogo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-undo-2"/></svg>Deshacer importación</a></div></div>
+    </div>
+    <div class="aviso aviso--advertencia" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">3 cosas por resolver de la importación</span> 5 diferencias para revisar, 3 movimientos sin categoría y 2 movimientos anteriores a tu fecha de inicio.</p><div class="aviso__acciones"><a class="boton boton--principal" href="importacion-detalle.html">Resolver ahora</a></div></div>
+    </div>
+    <section class="hoja resumen" aria-label="Resumen de octubre">
+      <div class="resumen__principal">
+        <p class="cifra__nombre">Gastado en octubre</p>
+        <p><span class="subrayado-doble"><span class="monto monto--grande">$96.300</span></span></p>
+        <p class="ayuda">Compras y transferencias. Los ingresos y los ajustes de saldo no cuentan como gasto.</p>
+      </div>
+      <div class="resumen__secundarios">
+        <div class="cifra"><p class="cifra__nombre">Saldo actual</p><p><span class="monto monto--medio">$4.739.150</span></p></div>
+        <div class="cifra"><p class="cifra__nombre">Ingresos de octubre</p><p><span class="monto monto--medio">$0</span></p></div>
+      </div>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Inicio después de importar: resultado y lo que falta resolver. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Resultado «14 agregados, 30 ya estaban, 2 corregidos»</td><td><code>GET /api/importaciones/ultima</code> → <code>agregados</code>, <code>ya_estaban</code>, <code>corregidos</code>, <code>importada_en</code>. Si no hay ninguna, el bloque no aparece.</td></tr><tr><td>Botón «Deshacer importación»</td><td><code>ultima.deshacible</code> (true solo para la última importación; el backend lo apaga si ya no se puede deshacer sin romper algo). Los movimientos que entraron salen de la tabla de importaciones (migración 0008).</td></tr><tr><td>«3 cosas por resolver» y su texto</td><td><code>ultima.pendientes</code> = <code>{preguntas, no_esta_en_el_banco, anteriores_al_inicio}</code> y <code>ultima.sin_categoria</code> = <code>{movimientos, grupos}</code>. El aviso se oculta solo cuando todo vale 0 (lo cuenta el servidor).</td></tr><tr><td>Botón «Importar movimientos del banco»</td><td>Siempre visible; no depende de ningún dato.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

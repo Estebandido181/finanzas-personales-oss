@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tu saldo inicial calculado · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+      <nav class="selector-mes" aria-label="Volver"><a class="boton boton--quieto" href="arranque.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Cambiar archivos o saldo</a></nav>
+      <h1>Revisa tu saldo inicial</h1>
+      <p class="ayuda">Así sale el saldo con el que empezaste, según el saldo actual que escribiste y lo que movió el banco en esos meses.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="a-calculo">
+      <div class="hoja__cabeza"><h2 id="a-calculo">Así sale tu saldo inicial</h2></div>
+      <div class="resumen__principal"><p class="cifra__nombre">Saldo inicial calculado, al comenzar el 4 de julio de 2026</p><p><span class="subrayado-doble"><span class="monto monto--grande">$1.287.350</span></span></p></div>
+      <div class="pila-sm grupo">
+        <div class="fila-cifra"><span class="cifra__nombre">Saldo actual, el que escribiste</span><span class="monto">$4.739.150</span></div>
+        <div class="fila-cifra"><span class="cifra__nombre">Menos ingresos del 4 de julio al 1 de octubre</span><span class="monto monto--negativo">−$7.150.000</span></div>
+        <div class="fila-cifra"><span class="cifra__nombre">Más gastos de esos meses</span><span class="monto">+$3.698.200</span></div>
+        <div class="total"><span>Saldo inicial calculado</span><span class="subrayado-doble"><span class="monto">$1.287.350</span></span></div>
+      </div>
+    </section>
+    <div class="aviso aviso--exito" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Los archivos cubren todo el periodo.</span> Del 4 de julio al 1 de octubre no falta ningún mes. Si faltara uno, el saldo inicial saldría mal y la app te lo avisaría aquí.</p></div>
+    </div>
+    <div class="aviso aviso--info" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Después se sincroniza Gmail de ese periodo.</span> Los avisos se unen con lo del banco. Lo que la app no pueda decidir sola te lo pregunta, con una sugerencia.</p></div>
+    </div>
+    <div class="aviso__acciones ofertas-regla" style="margin-top:0"><button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg>Empezar con este saldo inicial</button><a class="boton " href="arranque.html">Cambiar archivos o saldo</a></div>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Arranque guiado, paso 2: el saldo inicial calculado, para aprobar. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Saldo inicial y sus tres líneas</td><td>Respuesta de <code>POST /api/arranque/calcular</code>: <code>saldo_inicial_calculado</code> = <code>saldo_actual</code> − <code>ingresos_centavos</code> + <code>gastos_centavos</code>, <code>fecha_inicio_propuesta</code>. El frontend no calcula.</td></tr><tr><td>Aviso de huecos</td><td><code>huecos[]</code> vacío → aviso de éxito «Los archivos cubren todo el periodo». Con huecos pasa a advertencia que lista las fechas sin movimientos («Falta algo entre el 14 y el 19 de julio. Sube ese reporte o el saldo inicial saldrá mal»).</td></tr><tr><td>Al tocar «Empezar con este saldo inicial»</td><td><code>POST /api/arranque/confirmar</code> → crea la configuración de saldo, la importación (se puede deshacer) y lanza la sincronización de Gmail del periodo; el frontend sigue la <code>fase</code> hasta <code>categorizar</code>.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

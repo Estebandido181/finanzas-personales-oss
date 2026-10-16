@@ -1,0 +1,98 @@
+"""Compatibilidad de Gmail. MIME, autenticidad, cliente y OAuth tienen un único dueño."""
+import os
+import sys
+from finanzas.compartido.hora import ZONA_COLOMBIA
+from finanzas.modulos.sincronizacion.contratos import (
+    ALCANCES,
+    REMITENTE_POR_DEFECTO,
+    REMITENTE_AYN,
+    REMITENTES_OFICIALES,
+    como_remitentes,
+    ErrorGmail,
+    ErrorAutorizacionGmail,
+    CorreoGmail,
+    ClienteGmail,
+)
+from finanzas.modulos.sincronizacion.adaptadores.gmail.mime import (
+    decodificar_base64url,
+    _ETIQUETAS_BLOQUE,
+    _ETIQUETAS_OCULTAS,
+    _ESPACIOS_HTML,
+    _ConversorHtml,
+    _ordenar_lineas,
+    html_a_texto,
+    _encabezado,
+    _charset,
+    _decodificar_parte,
+    _es_adjunto,
+    _buscar_partes,
+    textos_del_cuerpo,
+    texto_del_cuerpo,
+    _encabezados,
+    direccion_remitente,
+    correo_desde_mensaje,
+)
+from finanzas.modulos.sincronizacion.adaptadores.gmail.autenticidad import (
+    SERVIDOR_AUTENTICADOR,
+    RESULTADOS_VALIDOS,
+    TIPOS_PROPIEDAD,
+    _SEPARADORES,
+    _CARACTERES_PALABRA,
+    _SALTO_SIN_PLEGAR,
+    _CONTROL,
+    _METODO,
+    _NOMBRE_PROPIEDAD,
+    _VERSION,
+    _VALOR_TOKEN,
+    _VALOR_BASE64,
+    _DOMINIO,
+    PropiedadAutenticacion,
+    ResultadoAutenticacion,
+    ResultadosAutenticacion,
+    _Token,
+    _ErrorGramatica,
+    _tokenizar,
+    _Analizador,
+    analizar_authentication_results,
+    METODOS_CONOCIDOS,
+    _VALOR_SMTP,
+    _semantica_valida,
+    _PROPIEDAD_DMARC_ALINEADA,
+    MOTIVO_REMITENTE,
+    MOTIVO_ENCABEZADO_INVALIDO,
+    MOTIVO_SIN_PASS_ALINEADO,
+    remitente_valido,
+    remitente_reconocido,
+    _dominio,
+    dominio_alineado,
+    motivo_autenticacion_invalida,
+    autenticacion_valida,
+)
+from finanzas.modulos.sincronizacion.adaptadores.gmail.cliente import (
+    consulta_gmail,
+    _es_error_de_autorizacion,
+    ClienteGmailReal,
+    _REINTENTOS,
+)
+from finanzas.modulos.sincronizacion.adaptadores.gmail.oauth import (
+    guardar_token,
+    _alcances_son_solo_lectura,
+    cargar_credenciales,
+    autorizar,
+    REDIRECCION_SIN_NAVEGADOR,
+    _HOSTS_LOCALES,
+    _PUERTO_SIN_NAVEGADOR,
+    INTENTOS_DE_PEGADO,
+    _INSTRUCCIONES_SIN_NAVEGADOR,
+    _MARCAS_DE_PEGADO,
+    _DireccionInvalida,
+    extraer_codigo,
+    _pedir_codigo,
+    _verificar_credenciales_nuevas,
+    autorizar_sin_navegador,
+    _MENSAJE_REVOCADO,
+)
+from finanzas.operacion.autorizar_gmail import main
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,40 @@
+{
+  "id": "msg-llave-0001",
+  "threadId": "hilo-llave-0001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1790735340000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@notificacionesbancolombia.com header.s=selector-ejemplo header.b=AbCdEf12;\r\n       spf=pass (google.com: domain of alertasynotificaciones@an.notificacionesbancolombia.com designates 192.0.2.10 as permitted sender) smtp.mailfrom=alertasynotificaciones@an.notificacionesbancolombia.com;\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Bancolombia (ejemplo) <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "persona.ejemplo@example.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alerta de transferencia (ejemplo)"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 0,
+      "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyAoZWplbXBsbyk8L3RpdGxlPgo8c3R5bGU-LnJlc2FsdGFkbyB7IGZvbnQtd2VpZ2h0OmJvbGQ7IGNvbG9yOiMyYzJhMjkgfTwvc3R5bGU-PC9oZWFkPgo8Ym9keT4KPHRhYmxlIHdpZHRoPSI2MDAiIGNlbGxwYWRkaW5nPSIwIiBjZWxsc3BhY2luZz0iMCI-CiAgPHRyPjx0ZD48aDE-JmlleGNsO0xpc3RvISBUb2RvIHNhbGkmb2FjdXRlOyBiaWVuIGNvbiB0dXMgbW92aW1pZW50b3M8L2gxPjwvdGQ-PC90cj4KICA8dHI-PHRkPgogICAgPHAgc3R5bGU9ImZvbnQtc2l6ZToxNHB4Ij48c3BhbiBjbGFzcz0icmVzYWx0YWRvIj5CYW5jb2xvbWJpYTwvc3Bhbj46IFBFUlNPTkEgRUpFTVBMTywgdHJhbnNmZXJpc3RlICQ2LDIwMC4wMAogICAgICBhIGxhIGxsYXZlIDMwMDAwMDAwMDAgZGVzZGUgdHUgY3VlbnRhICoxMjM0IGEgTk9NQlJFIERFU1RJTk8gRUpFTVBMTyBlbCAyOS8wOS8yNiBhIGxhcyZuYnNwOzIxOjI4LgogICAgICBDb24gQnJlLWIgZXMgZGUgdW5hIHkgZ3JhdGlzLiBEdWRhcyBhbCAwMTgwMDAwMDAwMDAuPC9wPgogIDwvdGQ-PC90cj4KICA8dHI-PHRkIHN0eWxlPSJmb250LXNpemU6MTFweDtjb2xvcjojNzc3Ij4KICAgIDxwPkVzdGUgZXMgdW4gY29ycmVvIGRlIGVqZW1wbG8gaW52ZW50YWRvIHBhcmEgcHJ1ZWJhcy48L3A-CiAgPC90ZD48L3RyPgo8L3RhYmxlPgo8L2JvZHk-PC9odG1sPgo"
+    }
+  }
+}

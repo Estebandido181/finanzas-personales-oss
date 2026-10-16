@@ -1,0 +1,60 @@
+{
+  "id": "real-0001",
+  "threadId": "hilo-real-0001",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "",
+  "internalDate": "1786579540000",
+  "payload": {
+    "partId": "",
+    "mimeType": "text/html",
+    "filename": "",
+    "headers": [
+      {
+        "name": "Delivered-To",
+        "value": "dueno.ejemplo@gmail.com"
+      },
+      {
+        "name": "ARC-Authentication-Results",
+        "value": "i=1; mx.google.com;\r\n       dkim=pass header.i=@an.notificacionesbancolombia.com header.s=sctrans header.b=AbCdEf12;\r\n       dkim=pass header.i=@sendclean.co.in header.s=s1 header.b=GhIjKl34;\r\n       spf=pass (google.com: domain of b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com designates 192.0.2.85 as permitted sender) smtp.mailfrom=\"b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com\";\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "Return-Path",
+        "value": "<b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "Received-SPF",
+        "value": "pass (google.com: domain of b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com designates 192.0.2.85 as permitted sender) client-ip=192.0.2.85;"
+      },
+      {
+        "name": "Authentication-Results",
+        "value": "mx.google.com;\r\n       dkim=pass header.i=@an.notificacionesbancolombia.com header.s=sctrans header.b=AbCdEf12;\r\n       dkim=pass header.i=@sendclean.co.in header.s=s1 header.b=GhIjKl34;\r\n       spf=pass (google.com: domain of b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com designates 192.0.2.85 as permitted sender) smtp.mailfrom=\"b-000000001-dueno.ejemplo=gmail.com@trans.an.notificacionesbancolombia.com\";\r\n       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notificacionesbancolombia.com"
+      },
+      {
+        "name": "From",
+        "value": "Alertas y Notificaciones <alertasynotificaciones@an.notificacionesbancolombia.com>"
+      },
+      {
+        "name": "To",
+        "value": "dueno.ejemplo@gmail.com"
+      },
+      {
+        "name": "Subject",
+        "value": "Alertas y Notificaciones"
+      },
+      {
+        "name": "MIME-Version",
+        "value": "1.0"
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+      }
+    ],
+    "body": {
+      "size": 809,
+      "data": "PCFET0NUWVBFIGh0bWw-CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU-QWxlcnRhcyB5IE5vdGlmaWNhY2lvbmVzPC90aXRsZT4KPHN0eWxlPnRkIHsgZm9udC1mYW1pbHk6IEFyaWFsOyB9PC9zdHlsZT48L2hlYWQ-Cjxib2R5Pgo8dGFibGUgd2lkdGg9IjYwMCIgY2VsbHBhZGRpbmc9IjAiIGNlbGxzcGFjaW5nPSIwIj4KICA8dHI-PHRkPjxpbWcgc3JjPSJodHRwczovL2V4YW1wbGUuY29tL2xvZ28ucG5nIiBhbHQ9IiI-PC90ZD48L3RyPgogIDx0cj48dGQ-PGgxPiZpZXhjbDtMaXN0byEgVG9kbyBzYWxpJm9hY3V0ZTsgYmllbiBjb24gdHVzIG1vdmltaWVudG9zPC9oMT48L3RkPjwvdHI-CiAgPHRyPjx0ZD4KICAgIDxwIHN0eWxlPSJmb250LXNpemU6MTRweCI-QmFuY29sb21iaWE6IENvbXByYXN0ZSAkODcuMzUwLDAwIGVuIFNVUEVSTUVSQ0FETyBFSkVNUExPIGNvbiB0dSBULkRlYiAqNDMyMSwKICAgICAgZWwgMTIvMDgvMjAyNiBhIGxhcyZuYnNwOzE5OjA1LiBTaSB0aWVuZXMgZHVkYXMsIGVuY3VlbnRyYW5vcyBhcXVpOiA2MDQwMDAwMDAwIG8KICAgICAgMDE4MDAwMDAwMDAwLiBFc3RhbW9zIGNlcmNhLjwvcD4KICA8L3RkPjwvdHI-CiAgPHRyPjx0ZCBzdHlsZT0iZm9udC1zaXplOjExcHg7Y29sb3I6Izc3NyI-CiAgICA8cD5Fc3RlIGVzIHVuIGNvcnJlbyBkZSBlamVtcGxvIGludmVudGFkbyBwYXJhIHBydWViYXMgKGVzdHJ1Y3R1cmEgZGUgZW5jYWJlemFkb3MgcmVhbCwgZGF0b3MgYW5vbmltaXphZG9zKS48L3A-CiAgPC90ZD48L3RyPgo8L3RhYmxlPgo8L2JvZHk-PC9odG1sPgo"
+    }
+  }
+}

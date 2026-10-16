@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Saldo · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="componentes.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button>
+        <button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button>
+        <button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+    <header class="encabezado"><div class="encabezado__titulo"><h1>Saldo</h1></div></header>
+
+    <section class="hoja" aria-label="Saldo actual">
+      <div class="resumen__principal">
+        <p class="cifra__nombre">Saldo actual</p>
+        <p><span class="monto monto--grande">$4.739.150</span></p>
+        <p class="ayuda">Llevas las cuentas desde el 1 de septiembre de 2026.</p>
+      </div>
+      <details class="desglose grupo">
+        <summary class="desglose__boton"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-down"/></svg><span class="desglose__texto">Ver cómo se calcula</span></summary>
+        <div class="desglose__cuerpo">
+          <div class="fila-cifra"><span>Saldo inicial</span><span class="monto">$1.250.000</span></div>
+          <div class="fila-cifra"><span>Ingresos</span><span class="monto monto--positivo">+$5.350.000</span></div>
+          <div class="fila-cifra"><span>Gastos</span><span class="monto">−$1.842.450</span></div>
+          <div class="fila-cifra"><span>Ajustes</span><span class="monto monto--negativo">−$18.400</span></div>
+          <div class="total"><span>Saldo actual</span><span class="subrayado-doble"><span class="monto">$4.739.150</span></span></div>
+        </div>
+      </details>
+    </section>
+
+    <div class="rejilla rejilla--mitades">
+      <section class="hoja" aria-labelledby="titulo-ingreso">
+        <h2 id="titulo-ingreso">Registrar un ingreso</h2>
+        <p class="ayuda hoja__ayuda">Para dinero que entra sin aviso de Bancolombia, como efectivo. Los ingresos con aviso entran solos: no los registres aquí.</p>
+        <form class="formulario">
+          <div class="campo">
+            <label class="etiqueta" for="monto">Monto en pesos</label>
+            <input class="entrada entrada--monto" id="monto" inputmode="decimal" placeholder="150.000" aria-describedby="ayuda-monto">
+            <p class="ayuda" id="ayuda-monto">Punto para los miles y coma para los centavos.</p>
+          </div>
+          <div class="campo">
+            <label class="etiqueta" for="fecha">Fecha y hora</label>
+            <input class="entrada" id="fecha" type="datetime-local" value="2026-09-30T09:15">
+          </div>
+          <div class="campo">
+            <label class="etiqueta" for="descripcion">Descripción <span class="detalle">(opcional)</span></label>
+            <input class="entrada" id="descripcion" placeholder="Por ejemplo: efectivo de una venta">
+          </div>
+          <button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-plus"/></svg>Registrar ingreso</button>
+        </form>
+      </section>
+
+      <section class="hoja" aria-labelledby="titulo-ajuste">
+        <h2 id="titulo-ajuste">Ajustar el saldo</h2>
+        <p class="ayuda hoja__ayuda">Escribe el saldo que ves en Bancolombia. La diferencia se guarda como un ajuste (cuota de manejo, 4x1000 y otros cobros sin aviso) y no cuenta como gasto.</p>
+        <div class="aviso" role="note">
+          <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+          <div class="aviso__cuerpo">
+            <p>Sincroniza antes de ajustar: si el banco ya descontó una compra que la app todavía no trajo, se restaría dos veces.</p>
+            <div class="aviso__acciones"><button type="button" class="boton"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-refresh-cw"/></svg>Sincronizar ahora</button></div>
+          </div>
+        </div>
+        <form class="formulario grupo">
+          <div class="campo">
+            <label class="etiqueta" for="saldo-real">Saldo real en Bancolombia</label>
+            <input class="entrada entrada--monto" id="saldo-real" inputmode="decimal" value="4.73O.000" aria-invalid="true" aria-describedby="error-saldo">
+            <p class="error-campo" id="error-saldo"><svg class="icono icono--sm" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-triangle-alert"/></svg><span>Ese monto tiene una letra O en lugar de un cero. Escríbelo solo con números, por ejemplo <span class="monto">4.730.000</span>.</span></p>
+          </div>
+          <button type="button" class="boton boton--principal"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-scale"/></svg>Ajustar saldo</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="hoja" aria-labelledby="titulo-lista-saldo">
+      <div class="hoja__cabeza">
+        <h2 id="titulo-lista-saldo">Ingresos y ajustes de septiembre</h2>
+      </div>
+      <p class="cifra__nombre">Total de ajustes del mes</p>
+      <p style="margin-top: var(--espacio-texto)"><span class="monto monto--medio monto--negativo">−$18.400</span> <span class="detalle">en 2 ajustes</span></p>
+      <ul class="libreta grupo">
+            <li class="movimiento">
+              <span class="chip__marca" style="background: var(--muted); color: var(--foreground)" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-hand-coins"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">Efectivo venta bicicleta</p>
+                <p class="movimiento__meta">Ingreso a mano · 29 de septiembre, 10:00 a. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto monto--positivo">+$150.000</span></div>
+              <div class="movimiento__acciones"><button type="button" class="boton boton--quieto" style="color: var(--destructive)"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-trash-2"/></svg>Borrar ingreso<span class="sr-only"> Efectivo venta bicicleta</span></button></div>
+            </li><li class="movimiento">
+              <span class="chip__marca" style="background: var(--muted); color: var(--foreground)" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-hand-coins"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">EMPRESA EJEMPLO S.A.S.</p>
+                <p class="movimiento__meta">Ingreso de Gmail · 28 de septiembre, 8:00 a. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto monto--positivo">+$4.800.000</span></div>
+
+            </li><li class="movimiento">
+              <span class="chip__marca" style="background: var(--muted); color: var(--foreground)" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-scale"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">Ajuste de saldo</p>
+                <p class="movimiento__meta">Ajuste · 20 de septiembre, 7:30 p. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto monto--negativo">−$12.399,50</span></div>
+
+            </li><li class="movimiento">
+              <span class="chip__marca" style="background: var(--muted); color: var(--foreground)" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-hand-coins"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">CARLOS RUIZ EJEMPLO</p>
+                <p class="movimiento__meta">Ingreso de Gmail · 12 de septiembre, 3:45 p. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto monto--positivo">+$400.000</span></div>
+
+            </li><li class="movimiento">
+              <span class="chip__marca" style="background: var(--muted); color: var(--foreground)" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-scale"/></svg></span>
+              <div class="movimiento__texto">
+                <p class="movimiento__descripcion">Ajuste de saldo</p>
+                <p class="movimiento__meta">Ajuste · 5 de septiembre, 9:10 a. m.</p>
+              </div>
+              <div class="movimiento__monto"><span class="monto monto--negativo">−$6.000,50</span></div>
+
+            </li>
+      </ul>
+      <p class="ayuda grupo">Solo se puede borrar un ingreso registrado a mano y posterior al último ajuste. Los ajustes y lo que llega de Gmail no se borran.</p>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

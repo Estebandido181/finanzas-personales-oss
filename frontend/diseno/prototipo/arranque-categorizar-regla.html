@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Categoriza lo nuevo (crear regla) · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado"><div class="encabezado__titulo">
+
+      <h1>Categoriza lo nuevo</h1>
+      <p class="ayuda">Estos movimientos entraron del banco y ninguna regla los categoriza. Están agrupados por descripción: elige una categoría y se aplica a todo el grupo.</p>
+    </div></header>
+    <section class="hoja" aria-labelledby="c-grupos">
+      <div class="hoja__cabeza"><h2 id="c-grupos">2 grupos sin categoría</h2></div>
+      <ul class="libreta"><li class="movimiento movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">COBRO VIAJE TRANSPORTE MASIVO</p>
+          <p class="movimiento__meta">Apareció 20 veces entre el 5 de julio y el 30 de septiembre. Suman <span class="monto">$62.000</span>. ¿Qué es?</p>
+        </div>
+        <div class="movimiento__panel"><div class="aviso aviso--exito" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-check"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Guardado en Transporte.</span> 20 movimientos categorizados. ¿Categorizar igual los siguientes? Crea una regla con un toque:</p><div class="aviso__acciones ofertas-regla"><button type="button" class="boton ">Los que empiezan por «COBRO VIAJE TRANSPORTE»</button><button type="button" class="boton ">Los que contienen «TRANSPORTE MASIVO»</button><button type="button" class="boton boton--quieto">No crear regla</button></div></div>
+    </div></div>
+      </li><li class="movimiento movimiento--pendiente movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">PAGO CUOTA GIMNASIO EJEMPLO</p>
+          <p class="movimiento__meta">Apareció 3 veces. Suman <span class="monto">$285.000</span>. ¿Qué es?</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton ">Categorizar<span class="sr-only"> PAGO CUOTA GIMNASIO EJEMPLO</span></button></div>
+      </li><li class="movimiento movimiento--pendiente movimiento--sin-monto">
+        <span class="chip__marca chip__marca--vacia" aria-hidden="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-dashed"/></svg></span>
+        <div class="movimiento__texto">
+          <p class="movimiento__descripcion">ABONO NOMINA EMPRESA EJEMPLO</p>
+          <p class="movimiento__meta">Apareció 2 veces. Suman <span class="monto monto--positivo">+$7.150.000</span>. ¿Qué es?</p>
+        </div>
+        <div class="movimiento__acciones"><button type="button" class="boton ">Categorizar<span class="sr-only"> ABONO NOMINA EMPRESA EJEMPLO</span></button></div>
+      </li></ul>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Categorizar lo nuevo: después de elegir, se ofrece la regla. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Elegir categoría</td><td><code>POST /api/movimientos/grupos-sin-categoria/categorizar</code> con <code>{descripcion, categoria_id}</code> → <code>{categorizados, reglas_propuestas[]}</code>. Las propuestas («empiezan por», «contienen») vienen escritas del servidor.</td></tr><tr><td>Crear regla y Deshacer</td><td><code>POST /api/reglas</code> con la propuesta elegida → <code>{regla, deshacer_hasta}</code>; <code>DELETE /api/reglas/{id}</code> la deshace sin tocar lo ya categorizado.</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

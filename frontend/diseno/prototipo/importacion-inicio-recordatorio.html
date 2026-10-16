@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inicio con el recordatorio de importar · Finanzas personales (prototipo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="v3.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral"><div class="lateral__interior">
+    <a class="marca" href="inicio.html"><img src="../favicon.svg" alt="">Finanzas</a>
+    <nav class="nav" aria-label="Secciones">
+      <a class="nav__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="nav__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="nav__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="nav__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías y reglas</span></a><a class="nav__item" href="no-reconocidos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-mail-question-mark"/></svg><span>No reconocidos</span><span class="nav__contador" aria-label="3 correos">3</span></a>
+    </nav>
+    <div class="lateral__pie">
+      <p class="detalle" id="apariencia-lateral">Apariencia</p>
+      <div role="group" aria-labelledby="apariencia-lateral" class="segmentos">
+        <button type="button" class="segmento" data-elegir-tema="sistema" aria-pressed="true"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-monitor"/></svg>Sistema</button><button type="button" class="segmento" data-elegir-tema="claro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-sun"/></svg>Claro</button><button type="button" class="segmento" data-elegir-tema="oscuro" aria-pressed="false"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-moon"/></svg>Oscuro</button>
+      </div>
+      <form action="login.html"><button type="submit" class="boton boton--quieto"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-log-out"/></svg>Cerrar sesión</button></form>
+    </div>
+  </div></aside>
+  <main class="contenido" id="contenido">
+    <div class="pila">
+<header class="encabezado">
+      <div class="encabezado__titulo">
+        <nav class="selector-mes" aria-label="Cambiar de mes"><a class="boton boton--quieto" href="#" rel="prev"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-chevron-left"/></svg>Septiembre</a></nav>
+        <h1>Octubre de 2026</h1>
+      </div>
+      <div class="sincronizacion">
+        <p class="sincronizacion__estado"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-circle-check"/></svg><span>Sincronizado hoy a las 6:02 a. m.</span></p>
+        <button type="button" class="boton "><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-refresh-cw"/></svg>Sincronizar ahora</button>
+        <a class="boton " href="importar.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-upload"/></svg>Importar movimientos del banco</a>
+      </div>
+    </header>
+    <div class="aviso aviso--info" role="status">
+      <svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-info"/></svg>
+      <div class="aviso__cuerpo"><p><span class="aviso__titulo">Importa el reporte del banco</span> Van 104 movimientos desde tu última importación, hace 3 semanas. El banco entrega como máximo 120 movimientos por archivo: si esperas más, se pierden.</p><div class="aviso__acciones"><a class="boton boton--principal" href="importar.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="iconos-v3.svg#i-upload"/></svg>Importar movimientos del banco</a><a class="boton boton--quieto" href="importar.html">Ver cómo descargar el reporte</a></div></div>
+    </div>
+    <section class="hoja resumen" aria-label="Resumen de octubre">
+      <div class="resumen__principal">
+        <p class="cifra__nombre">Gastado en octubre</p>
+        <p><span class="subrayado-doble"><span class="monto monto--grande">$96.300</span></span></p>
+        <p class="ayuda">Compras y transferencias. Los ingresos y los ajustes de saldo no cuentan como gasto.</p>
+      </div>
+      <div class="resumen__secundarios">
+        <div class="cifra"><p class="cifra__nombre">Saldo actual</p><p><span class="monto monto--medio">$4.739.150</span></p></div>
+        <div class="cifra"><p class="cifra__nombre">Ingresos de octubre</p><p><span class="monto monto--medio">$0</span></p></div>
+      </div>
+    </section>
+    <section class="hoja nota-api" aria-labelledby="nota-api">
+      <h2 id="nota-api">Anotación del prototipo: qué dato de la API alimenta cada estado</h2>
+      <p class="ayuda">Inicio cuando conviene importar: sugerencia con los pasos para descargar el reporte. El estado sale del servidor (D44): el frontend no lo deduce. Los nombres son una propuesta para el backend. Esta hoja no es parte de la pantalla.</p>
+      <table><thead><tr><th scope="col">Estado o texto</th><th scope="col">Dato de la API</th></tr></thead><tbody><tr><td>Recordatorio visible</td><td><code>GET /api/importaciones/recordatorio</code> → <code>{mostrar, movimientos_desde_importar, dias_desde_importar}</code>. <code>mostrar</code> lo decide el servidor (unos 100 movimientos o 4 semanas, lo que ocurra primero).</td></tr><tr><td>«104 movimientos» y «hace 3 semanas»</td><td><code>movimientos_desde_importar</code> y <code>dias_desde_importar</code>.</td></tr><tr><td>Desaparece al importar</td><td><code>mostrar</code> pasa a false cuando se crea una importación; el frontend solo vuelve a pedir el dato.</td></tr><tr><td>Nunca se ha importado</td><td><code>dias_desde_importar = null</code>: el texto cambia a «Todavía no importaste el reporte del banco».</td></tr></tbody></table>
+    </section>
+    </div>
+  </main>
+</div>
+<nav class="barra-inferior" aria-label="Secciones"><a class="barra-inferior__item" href="inicio.html" aria-current="page"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-book-open"/></svg><span>Inicio</span></a><a class="barra-inferior__item" href="movimientos.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-arrow-left-right"/></svg><span>Movimientos</span></a><a class="barra-inferior__item" href="saldo.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-wallet"/></svg><span>Saldo</span></a><a class="barra-inferior__item" href="categorias.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-tags"/></svg><span>Categorías</span></a><a class="barra-inferior__item" href="mas.html"><svg class="icono" aria-hidden="true" focusable="false"><use href="../iconos/iconos.svg#i-ellipsis"/></svg><span>Más</span></a></nav>
+
+</body>
+</html>

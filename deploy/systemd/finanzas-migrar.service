@@ -1,0 +1,63 @@
+# Migraciones de la base de datos (ítem 22). Ver deploy/GUIA.md, 13.2.
+#
+# No tiene temporizador ni arranca solo: se lanza a mano al instalar y al
+# actualizar la app (detiene la app y la sincronización, ver Conflicts=):
+#
+#   sudo systemctl start finanzas-migrar.service
+#   journalctl -u finanzas-migrar -n 20 --no-pager     # qué hizo
+#
+# Hace un respaldo en /var/backups/finanzas antes de cambiar nada
+# (finanzas-antes-de-migrar-*.db; la rotación diaria no los borra) y aplica
+# las migraciones pendientes en una sola transacción. Si la base ya está al
+# día, no hace nada. Si falla, la unidad queda en "failed" y la base como
+# estaba. La app y la sincronización no arrancan si la base no está al día.
+#
+# No carga /etc/finanzas/finanzas.env: no necesita ningún secreto, y las
+# rutas van explícitas abajo.
+
+[Unit]
+Description=Finanzas personales: migraciones de la base de datos
+# Nunca migrar con la app o la sincronización escribiendo: lanzar esta unidad
+# las detiene (y no se pueden arrancar mientras migra). Después hay que
+# arrancarlas a mano (deploy/GUIA.md, 13.2). Para los temporizadores
+# conviene detenerlos antes (13.2, paso 2): si finanzas-sync.timer lanzara
+# una sincronización en medio, systemd detendría la migración (la
+# transacción se deshace entera y la base queda como estaba).
+Conflicts=finanzas.service finanzas-sync.service
+
+[Service]
+Type=oneshot
+User=finanzas
+Group=finanzas
+WorkingDirectory=/opt/finanzas
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/finanzas/.venv/bin/python -m finanzas.migrar --base /var/lib/finanzas/finanzas.db --respaldos /var/backups/finanzas
+TimeoutStartSec=15min
+
+# --- Endurecimiento (como finanzas-respaldo.service) -----------------------
+# Escribe en la base (/var/lib/finanzas) y el respaldo previo (/var/backups/finanzas).
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/finanzas /var/backups/finanzas
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077

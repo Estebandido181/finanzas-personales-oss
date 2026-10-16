@@ -1,0 +1,50 @@
+# Actualiza la IP del subdominio de DuckDNS (ítem 07). Lo lanza duckdns.timer.
+#
+# Ejecutarlo a mano:  sudo systemctl start duckdns.service
+# Registros:          journalctl -u duckdns
+#
+# Por qué así:
+# - /etc/finanzas/duckdns.env es de root con permisos 0600. systemd (que corre
+#   como root) lo lee con LoadCredential y lo entrega al servicio en una
+#   carpeta privada ($CREDENTIALS_DIRECTORY) que solo este servicio ve.
+# - El script corre con DynamicUser: un usuario temporal sin privilegios que
+#   se crea al arrancar y desaparece al terminar. No puede leer la base, el
+#   token de Gmail ni nada de /etc/finanzas.
+# - El token nunca va en la línea de comandos (se pasa a curl por stdin con
+#   -K -), así que no aparece en "ps" ni en los registros.
+
+[Unit]
+Description=Actualizar la IP en DuckDNS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+DynamicUser=true
+LoadCredential=duckdns.env:/etc/finanzas/duckdns.env
+ExecStart=/bin/bash /opt/finanzas/deploy/duckdns.sh
+TimeoutStartSec=2min
+
+# --- Endurecimiento --------------------------------------------------------
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077

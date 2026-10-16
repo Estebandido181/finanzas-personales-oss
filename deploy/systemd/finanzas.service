@@ -1,0 +1,63 @@
+# Servicio web de Finanzas personales (ítem 07). Ver deploy/GUIA.md.
+#
+# Instalar:   sudo cp /opt/finanzas/deploy/systemd/finanzas.service /etc/systemd/system/
+#             sudo systemctl daemon-reload && sudo systemctl enable --now finanzas
+# Registros:  journalctl -u finanzas
+#
+# Un solo proceso de uvicorn (sin --workers): el registro de tokens del
+# formulario de ingreso y el limitador de intentos de login viven en memoria,
+# así que varios procesos no se verían entre sí.
+#
+# Solo escucha en 127.0.0.1: desde internet se entra por Caddy (HTTPS).
+# --proxy-headers + --forwarded-allow-ips=127.0.0.1: uvicorn solo cree los
+# encabezados X-Forwarded-For/-Proto cuando la conexión viene de Caddy (misma
+# máquina); así la IP del límite de intentos es la del visitante real.
+
+[Unit]
+Description=Finanzas personales (app web)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=finanzas
+Group=finanzas
+WorkingDirectory=/opt/finanzas
+EnvironmentFile=/etc/finanzas/finanzas.env
+# El código es de root y solo lectura para este usuario: que Python no intente
+# escribir los .pyc.
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/finanzas/.venv/bin/uvicorn --factory finanzas.web.app:crear_app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=5
+
+# --- Endurecimiento --------------------------------------------------------
+# Todo el sistema de archivos es de solo lectura salvo /var/lib/finanzas
+# (base de datos y token de Gmail, que la app renueva sola).
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/finanzas
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

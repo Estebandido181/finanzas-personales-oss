@@ -1,0 +1,50 @@
+# Sincronización con Gmail (ítem 07). La lanza finanzas-sync.timer.
+#
+# Ejecutarla a mano:  sudo systemctl start finanzas-sync.service
+# Registros:          journalctl -u finanzas-sync
+# Último resultado:   systemctl show -p ExecMainStatus finanzas-sync.service
+#
+# Códigos de salida de "python -m finanzas.sincronizacion": 0 bien; 1 algún
+# correo o la conexión con Gmail falló (se reintenta en la siguiente); 2 falta
+# configuración o autorización. Con 1 o 2 la unidad queda en "failed".
+
+[Unit]
+Description=Finanzas personales: sincronizar avisos de Gmail
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=finanzas
+Group=finanzas
+WorkingDirectory=/opt/finanzas
+EnvironmentFile=/etc/finanzas/finanzas.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/finanzas/.venv/bin/python -m finanzas.sincronizacion
+TimeoutStartSec=15min
+
+# --- Endurecimiento (igual que finanzas.service) ---------------------------
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/finanzas
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
